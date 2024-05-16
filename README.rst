@@ -37,6 +37,8 @@ OS-Climate Data Extraction Tool
 
 .. _notes:
 
+This code provides you with an api that extracts key performance indicators (KPIs) and other figures from tables within PDF documents. 
+
 Notes
 =====
 
