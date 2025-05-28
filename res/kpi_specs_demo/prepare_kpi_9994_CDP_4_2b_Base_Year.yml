@@ -1,0 +1,49 @@
+# ==================================================================
+# KPI Definition
+# C4.2b Base year
+# NB:KPI 9993 = CDP 4.b, year target set, for first target
+#	 this is more for testing/demonstration for CDP reports, don't use it productively yet
+# Author: Mohamed Bouhali
+# ==================================================================
+
+general:
+  kpi_id: 9994
+  kpi_name: 'C4.2b Base year'
+  minimum_score: 500
+  minimum_score_desc_regex: 250
+  value_must_be_numeric: True
+  value_must_be_year : True
+
+desc_regex_match_list:
+  entry_1:
+    pattern_raw: '.*base year.*'
+    score: 8000
+    matching_mode: MATCHING_MUST_INCLUDE
+    score_decay: 0.1
+    case_sensitive: false
+    multi_match_decay: 0
+    letter_decay_hl: 20
+    letter_decay_disregard: 19
+
+anywhere_regex_match_list:
+  entry_1:
+    general_match:
+        type: KPISpecs.GeneralRegExMatch
+        args:
+          pattern_raw: '.*\(c4\.2b\) *provide details of .*targets.*'
+          case_sensitive: false
+    distance_mode: DISTANCE_MOD_EUCLID_UP_ONLY
+    score: 5000
+    matching_mode: MATCHING_MUST_INCLUDE
+    score_decay: 0.9
+    multi_match_decay: 0.2
+    letter_decay_hl: 8
+    letter_decay_disregard: 79
+
+value_regex_match_list:
+  entry_1:
+    type: KPISpecs.GeneralRegExMatch
+    args:
+      pattern_raw: '(19[8-9]|20[0-2])[0-9]'
+      case_sensitive: false
+      comment:   # must be year 1980-2029

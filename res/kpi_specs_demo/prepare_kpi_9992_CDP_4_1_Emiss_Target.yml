@@ -1,0 +1,42 @@
+# ==================================================================
+# KPI Definition
+# C4.1 Currency of CDP Report
+# NB: KPI 9992 = Emission Target CDP Report
+#	  this works right now only for CDP reports
+# Author: Mohamed Bouhali
+# ==================================================================
+
+general:
+  kpi_id: 9991
+  kpi_name: 'C4.1 Currency of CDP Report'
+  value_must_be_numeric: false
+  minimum_score: 500
+  minimum_score_desc_regex: 250
+
+desc_regex_match_list:
+  entry_1:
+    pattern_raw: '.*\(c4\.1\) *did you have an emissions target.*'
+    score: 8000
+    matching_mode: MATCHING_CAN_INCLUDE
+    score_decay: 0.1
+    case_sensitive: false
+    multi_match_decay: 0
+    letter_decay_hl: 20
+    letter_decay_disregard: 78
+  entry_2:
+    pattern_raw: '.*\(c4\.1\).*'
+    score: 2000
+    matching_mode: MATCHING_MUST_INCLUDE
+    score_decay: 0.1
+    case_sensitive: false
+    multi_match_decay: 0
+    letter_decay_hl: 20
+    letter_decay_disregard: 78
+
+value_regex_match_list:
+  entry_1:
+    type: KPISpecs.GeneralRegExMatch
+    args:
+      pattern_raw: '[A-Z ]{3,35}target[A-Z ]{0,10}'
+      case_sensitive: false
+      comment:  must be 3 uppercase letters
