@@ -113,6 +113,10 @@ def main():
 	
 	parser = argparse.ArgumentParser(description='Rule-based KPI extraction')
 	# Add the arguments
+	parser.add_argument('--pdftohtml_mod_executable',
+						type=str,
+						default=None,
+						help='Path to executable pdftohtml_mod (can be found in git repository: osc-xpdf-mod)')
 	parser.add_argument('--raw_pdf_folder',
 						type=str,
 						default=None,
@@ -129,6 +133,7 @@ def main():
 						type=int,
 						default=1,
 						help='Verbosity level (0=shut up)')
+
 	args = parser.parse_args()
 	config.global_raw_pdf_folder = remove_trailing_slash(get_input_variable(args.raw_pdf_folder, "What is the raw pdf folder?")).replace('\\', '/') + r'/'
 	config.global_working_folder = remove_trailing_slash(get_input_variable(args.working_folder, "What is the working folder?")).replace('\\', '/') + r'/'
@@ -149,7 +154,7 @@ def main():
 	config.global_exec_folder = path+ r'/'
 	config.global_rendering_font_override = path + r'/' + config.global_rendering_font_override
 	config.global_approx_font_name = path + r'/' + config.global_approx_font_name
-	config.global_pdftohtml_mod_executable = path + r'/' + config.global_pdftohtml_mod_executable
+	config.global_pdftohtml_mod_executable = args.pdftohtml_mod_executable  #path + r'/' + config.global_pdftohtml_mod_executable
 	
 	print_verbose(1, "Using config.global_exec_folder=" + config.global_exec_folder)
 	print_verbose(1, "Using config.global_raw_pdf_folder=" + config.global_raw_pdf_folder)

@@ -9,7 +9,7 @@
 global_verbosity		= 1 ### TODO: Change verbosity here. verbosity 6-8 are good values for debugging without too much output ###
 
 global_exec_folder = r"./"
-global_pdftohtml_mod_executable =r"../../bin/pdftohtml_mod/pdftohtml_mod"
+global_pdftohtml_mod_executable ="" #r"../../bin/pdftohtml_mod/pdftohtml_mod"
 
 # ***** gas and oil pdfs ***** :
 global_raw_pdf_folder   = r"raw_pdf/" 
