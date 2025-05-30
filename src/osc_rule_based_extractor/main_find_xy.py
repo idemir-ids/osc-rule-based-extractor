@@ -21,7 +21,7 @@ pd.options.mode.chained_assignment = None  # default='warn'
 def generate_dummy_test_data():
 
 	test_data = TestData()
-	test_data.generate_dummy_test_data(config.global_raw_pdf_folder, '*')
+	test_data.generate_dummy_test_data(osc_rule_based_extractor.config.global_raw_pdf_folder, '*')
 	
 	return test_data
 
@@ -124,7 +124,7 @@ def modify_csv(csv, info_file_contents):
 	for c in range(len(csvPD)): #check columns
 		#print(str(c) + str(csvPD['PDF_NAME'][c]))
 		if str(csvPD['POS_X'][c])=="nan" or str(csvPD['POS_Y'][c]) == "nan":
-			coordis = analyze_pdf(config.global_raw_pdf_folder + str(csvPD['PDF_NAME'][c]), int(csvPD['PAGE'][c]), str(csvPD['ANSWER_RAW'][c]), info_file_contents, assume_conversion_done=False, force_parse_pdf=False)
+			coordis = analyze_pdf(osc_rule_based_extractor.config.global_raw_pdf_folder + str(csvPD['PDF_NAME'][c]), int(csvPD['PAGE'][c]), str(csvPD['ANSWER_RAW'][c]), info_file_contents, assume_conversion_done=False, force_parse_pdf=False)
 			print_verbose(2, "coord:")
 			print_verbose(2, coordis)
 			if(len(coordis)>0):
@@ -177,19 +177,19 @@ def main():
 						help='Verbosity level (0=shut up)')	
 
 	args = parser.parse_args()
-	config.global_raw_pdf_folder = remove_trailing_slash(get_input_variable(args.raw_pdf_folder, "What is the raw pdf folder?")).replace('\\', '/') + r'/'
-	config.global_working_folder = remove_trailing_slash(get_input_variable(args.working_folder, "What is the working folder?")).replace('\\', '/') + r'/'
-	config.global_pdf_name = get_input_variable(args.pdf_name, "Which pdf do you want to check?") 
-	config.global_csv_name = get_input_variable(args.csv_name, "Which csv file do you want to check?") 
-	#config.global_page_number = get_input_variable(args.page_number, "Which page do you want to check?")
-	#config.global_text = get_input_variable(args.text, "For which text do you want to find the x, y coordinates?")
-	config.global_output_folder =  remove_trailing_slash(get_input_variable(args.output_folder, "What is the output folder?")).replace('\\', '/') + r'/'
-	config.global_verbosity = args.verbosity
+	osc_rule_based_extractor.config.global_raw_pdf_folder = remove_trailing_slash(get_input_variable(args.raw_pdf_folder, "What is the raw pdf folder?")).replace('\\', '/') + r'/'
+	osc_rule_based_extractor.config.global_working_folder = remove_trailing_slash(get_input_variable(args.working_folder, "What is the working folder?")).replace('\\', '/') + r'/'
+	osc_rule_based_extractor.config.global_pdf_name = get_input_variable(args.pdf_name, "Which pdf do you want to check?") 
+	osc_rule_based_extractor.config.global_csv_name = get_input_variable(args.csv_name, "Which csv file do you want to check?") 
+	#osc_rule_based_extractor.config.global_page_number = get_input_variable(args.page_number, "Which page do you want to check?")
+	#osc_rule_based_extractor.config.global_text = get_input_variable(args.text, "For which text do you want to find the x, y coordinates?")
+	osc_rule_based_extractor.config.global_output_folder =  remove_trailing_slash(get_input_variable(args.output_folder, "What is the output folder?")).replace('\\', '/') + r'/'
+	osc_rule_based_extractor.config.global_verbosity = args.verbosity
 	
-	os.makedirs(config.global_working_folder, exist_ok=True)
-	os.makedirs(config.global_output_folder, exist_ok=True)
+	os.makedirs(osc_rule_based_extractor.config.global_working_folder, exist_ok=True)
+	os.makedirs(osc_rule_based_extractor.config.global_output_folder, exist_ok=True)
 	
-	# fix config.global_exec_folder and config.global_rendering_font_override
+	# fix osc_rule_based_extractor.config.global_exec_folder and osc_rule_based_extractor.config.global_rendering_font_override
 	path = ''
 	try:
 		path = globals()['_dh'][0]
@@ -197,15 +197,15 @@ def main():
 		path = os.path.dirname(os.path.realpath(__file__))
 	path = remove_trailing_slash(path).replace('\\', '/')
 	
-	config.global_exec_folder = path+ r'/'
-	config.global_rendering_font_override = path + r'/' + config.global_rendering_font_override
+	osc_rule_based_extractor.config.global_exec_folder = path+ r'/'
+	osc_rule_based_extractor.config.global_rendering_font_override = path + r'/' + osc_rule_based_extractor.config.global_rendering_font_override
 	
-	print_verbose(1, "Using config.global_exec_folder=" + config.global_exec_folder)
-	print_verbose(1, "Using config.global_raw_pdf_folder=" + config.global_raw_pdf_folder)
-	print_verbose(1, "Using config.global_working_folder=" + config.global_working_folder)
-	print_verbose(1, "Using config.global_output_folder=" + config.global_output_folder)
-	print_verbose(1, "Using config.global_verbosity=" + str(config.global_verbosity))
-	print_verbose(5, "Using config.global_rendering_font_override=" + config.global_rendering_font_override)
+	print_verbose(1, "Using osc_rule_based_extractor.config.global_exec_folder=" + osc_rule_based_extractor.config.global_exec_folder)
+	print_verbose(1, "Using osc_rule_based_extractor.config.global_raw_pdf_folder=" + osc_rule_based_extractor.config.global_raw_pdf_folder)
+	print_verbose(1, "Using osc_rule_based_extractor.config.global_working_folder=" + osc_rule_based_extractor.config.global_working_folder)
+	print_verbose(1, "Using osc_rule_based_extractor.config.global_output_folder=" + osc_rule_based_extractor.config.global_output_folder)
+	print_verbose(1, "Using osc_rule_based_extractor.config.global_verbosity=" + str(osc_rule_based_extractor.config.global_verbosity))
+	print_verbose(5, "Using osc_rule_based_extractor.config.global_rendering_font_override=" + osc_rule_based_extractor.config.global_rendering_font_override)
 
 	test_data = generate_dummy_test_data()
 	
@@ -215,18 +215,18 @@ def main():
 
 	
 	
-	info_file_contents = DataImportExport.load_info_file_contents(remove_trailing_slash(config.global_working_folder) + '/info.json')
+	info_file_contents = DataImportExport.load_info_file_contents(remove_trailing_slash(osc_rule_based_extractor.config.global_working_folder) + '/info.json')
 	
 	time_start = time.time()
 	
 
 	coordisresults = []
-	#cur_coordisresults = analyze_pdf(config.global_raw_pdf_folder + config.global_pdf_name, config.global_page_number,	 config.global_text, info_file_contents, assume_conversion_done=False, force_parse_pdf=False) #analyse input data
-	modify_csv(config.global_csv_name, info_file_contents)
+	#cur_coordisresults = analyze_pdf(osc_rule_based_extractor.config.global_raw_pdf_folder + osc_rule_based_extractor.config.global_pdf_name, osc_rule_based_extractor.config.global_page_number,	 osc_rule_based_extractor.config.global_text, info_file_contents, assume_conversion_done=False, force_parse_pdf=False) #analyse input data
+	modify_csv(osc_rule_based_extractor.config.global_csv_name, info_file_contents)
 	#print(cur_coordisresults) #debugging	empty， so analyze_pdf method didn't work as expected
 	#coordisresults.extend(cur_coordisresults)
 	#print(coordisresults) #debugging	empty
-	print_verbose(1, "RESULT FOR " + config.global_pdf_name)
+	print_verbose(1, "RESULT FOR " + osc_rule_based_extractor.config.global_pdf_name)
 	print_verbose(1, coordisresults)
 
 		

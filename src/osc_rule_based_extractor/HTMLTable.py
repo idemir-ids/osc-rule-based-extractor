@@ -485,7 +485,7 @@ class HTMLTable:
 				return True# at least one row was empty => consider always as connected
 			
 			
-			y_limit = min_y0 + (max_y0 - min_y0) * config.global_row_connection_threshold  #at least space that woulld occupy 4x row r0 are (not) empty #New: 27.06.2022 (was previously: * 4)
+			y_limit = min_y0 + (max_y0 - min_y0) * osc_rule_based_extractor.config.global_row_connection_threshold  #at least space that woulld occupy 4x row r0 are (not) empty #New: 27.06.2022 (was previously: * 4)
 			
 			if(min_y1 <= y_limit):
 				return True
@@ -937,7 +937,7 @@ class HTMLTable:
 			
 			if(rec_counter % 1000 == 0):
 				t_now = time.time()
-				if(t_now - t_start > config.global_max_identify_complex_items_timeout): #max 5 sec TODO
+				if(t_now - t_start > osc_rule_based_extractor.config.global_max_identify_complex_items_timeout): #max 5 sec TODO
 					timeout = True
 				
 			
@@ -1285,8 +1285,8 @@ class HTMLTable:
 		old_num_rows = -1
 		old_num_cols = -1
 		
-		#global config.global_verbosity
-		#config.global_verbosity = 6
+		#global osc_rule_based_extractor.config.global_verbosity
+		#osc_rule_based_extractor.config.global_verbosity = 6
 		
 		
 		print_verbose(3, 'Table before cleanup: '+str(self))
@@ -1501,7 +1501,7 @@ class HTMLTable:
 		
 			
 	def is_good_table(self):
-		neccessary_actual_items = 4 if not config.global_be_more_generous_with_good_tables else 2
+		neccessary_actual_items = 4 if not osc_rule_based_extractor.config.global_be_more_generous_with_good_tables else 2
 		if(not(self.num_rows >= 2 and self.num_cols >= 2 and self.count_actual_items() >= neccessary_actual_items)):
 			print_verbose(7, "----->> bad, reason:1")
 			return False
@@ -1536,7 +1536,7 @@ class HTMLTable:
 		print_verbose(7, "----->> reached end of is_good_table")
 		return (cnt_numerics > 3 and density > 0.6) or (cnt_numerics > 7 and density > 0.4) or cnt_numerics > 10 \
 		    or (cnt_weak_numerics > 3 and num_items > 5 and density > 0.4) \
-		    or (cnt_weak_numerics > 0 and num_items > 2 and density > 0.4 and config.global_be_more_generous_with_good_tables)
+		    or (cnt_weak_numerics > 0 and num_items > 2 and density > 0.4 and osc_rule_based_extractor.config.global_be_more_generous_with_good_tables)
 		
 	
 	def categorize_as_table(self):
@@ -1926,7 +1926,7 @@ class HTMLTable:
 			print_verbose(8, '--->> is_non_overlapping_row_mergable: Rows r0='+str(r0)+' and r0+1 have both numbers')
 			return False,0 # both rows contain numbers			
 		
-		#if(config.global_table_merging_only_if_numbers_come_first and not n0):
+		#if(osc_rule_based_extractor.config.global_table_merging_only_if_numbers_come_first and not n0):
 		#	print_verbose(8, '--->> is_non_overlapping_row_mergable: Rows r0='+str(r0)+' and r0+1, the first one has no numbers.')
 		#	return False,0 # 
 			

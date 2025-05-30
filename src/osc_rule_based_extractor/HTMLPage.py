@@ -976,7 +976,7 @@ class HTMLPage:
 				
 			table = self.discover_table(next)
 			print_verbose(2, "FOUND TABLE: "+str(table))
-			if(config.global_force_special_items_into_table):
+			if(osc_rule_based_extractor.config.global_force_special_items_into_table):
 				table.force_special_items_into_table()
 				
 				
@@ -999,7 +999,7 @@ class HTMLPage:
 			t.special_idx = tmp_sp_idx
 			
 		# merge non-overlapping rows, if needed
-		if(config.global_table_merge_non_overlapping_rows):
+		if(osc_rule_based_extractor.config.global_table_merge_non_overlapping_rows):
 			for table in self.tables:
 				table.merge_non_overlapping_rows()		
 				#pass
@@ -1107,7 +1107,7 @@ class HTMLPage:
 			if(RENDERING_USE_CLUSTER_COLORS):
 				font_color = it.rendering_color
 			
-			span_font = ImageFont.truetype(it.font_file if config.global_rendering_font_override == "" else config.global_rendering_font_override, it.font_size)
+			span_font = ImageFont.truetype(it.font_file if osc_rule_based_extractor.config.global_rendering_font_override == "" else osc_rule_based_extractor.config.global_rendering_font_override, it.font_size)
 			context.text((it.pos_x,it.pos_y), it.txt, font=span_font, fill=font_color)
 			
 			#for w in it.words:
@@ -1458,7 +1458,7 @@ class HTMLPage:
 		
 		cur_item_id = 0
 		
-		with open(htmlfile, errors='ignore', encoding=config.global_html_encoding) as f:
+		with open(htmlfile, errors='ignore', encoding=osc_rule_based_extractor.config.global_html_encoding) as f:
 			html_file = f.readlines()
 		
 		for i in range(0, len(html_file)):
@@ -1515,14 +1515,14 @@ class HTMLPage:
 							span_font = ImageFont.truetype(fonts_dir + '/' + font_url_dict[font_dict[int(gs[0])]] , int(gs[1]))
 							item.font_file = fonts_dir + '/' + font_url_dict[font_dict[int(gs[0])]]
 						else:
-							span_font = ImageFont.truetype(config.global_approx_font_name , int(gs[1]))
-							item.font_file = config.global_approx_font_name
+							span_font = ImageFont.truetype(osc_rule_based_extractor.config.global_approx_font_name , int(gs[1]))
+							item.font_file = osc_rule_based_extractor.config.global_approx_font_name
 						
 						try:
 							space_width = max(space_width, get_text_width(' ', span_font), get_text_width('x', span_font))
 						except:
-							span_font = ImageFont.truetype(config.global_approx_font_name , int(gs[1]))
-							item.font_file = config.global_approx_font_name							
+							span_font = ImageFont.truetype(osc_rule_based_extractor.config.global_approx_font_name , int(gs[1]))
+							item.font_file = osc_rule_based_extractor.config.global_approx_font_name							
 							space_width = max(space_width, get_text_width(' ', span_font), get_text_width('x', span_font))
 						
 						#text_width = get_text_width(gs[6], int(gs[1]), span_font)
@@ -1549,9 +1549,9 @@ class HTMLPage:
 								if(word.rect.x0 < word.rect.x1 and word.rect.y0 < word.rect.y1): # otherwise, bad word!
 									item.words.append(word)
 				
-				item.space_width = max(space_width, get_text_width(' ',ImageFont.truetype(config.global_approx_font_name, item.font_size)))
+				item.space_width = max(space_width, get_text_width(' ',ImageFont.truetype(osc_rule_based_extractor.config.global_approx_font_name, item.font_size)))
 				#print(item.space_width)
-				#item.space_width = get_text_width(' ',ImageFont.truetype(config.global_approx_font_name, item.font_size))
+				#item.space_width = get_text_width(' ',ImageFont.truetype(osc_rule_based_extractor.config.global_approx_font_name, item.font_size))
 				item.fix_overlapping_words()
 				item.recalc_geometry()
 				item.rejoin_words()

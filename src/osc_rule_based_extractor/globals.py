@@ -19,8 +19,9 @@ import json
 import jsonpickle
 import html
 import shutil
-import config
 import math
+
+import osc_rule_based_extractor.config
 
 
 ALIGN_DEFAULT 			= 0
@@ -65,7 +66,7 @@ def wait_for_user():
 
 	
 def print_big(txt, do_wait = True):
-	if(config.global_verbosity == 0):
+	if(osc_rule_based_extractor.config.global_verbosity == 0):
 		return
 	if(do_wait):
 		wait_for_user()
@@ -78,7 +79,7 @@ def print_big(txt, do_wait = True):
 
 		
 def print_verbose(verbosity, txt):
-	if(verbosity <= config.global_verbosity):
+	if(verbosity <= osc_rule_based_extractor.config.global_verbosity):
 		print(str(txt))
 		
 def print_subset(verbosity, list, subset):
@@ -119,7 +120,7 @@ def get_text_width(text, font):
 
 def get_html_out_dir(fname):
 	fname = '/'+ fname.replace('\\','/')
-	return config.global_working_folder + r'html/' + fname[(fname.rfind(r'/')+1):] + r'.html_dir' 
+	return osc_rule_based_extractor.config.global_working_folder + r'html/' + fname[(fname.rfind(r'/')+1):] + r'.html_dir' 
 	
 	
 	

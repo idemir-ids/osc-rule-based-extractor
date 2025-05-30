@@ -25,8 +25,8 @@ class HTMLDirectory:
 	@staticmethod
 	def call_pdftohtml(infile, outdir):
 		print_verbose(2, '-> call pdftohtml_mod '+infile)
-		#os.system(config.global_exec_folder + r'/pdftohtml_mod/pdftohtml_mod "' + infile + '" "' + remove_trailing_slash(outdir) + '"')  ## TODO: Specify correct path here!
-		os.system(config.global_pdftohtml_mod_executable + ' "' + infile + '" "' + remove_trailing_slash(outdir) + '"')  ## TODO: Specify correct path here!
+		#os.system(osc_rule_based_extractor.config.global_exec_folder + r'/pdftohtml_mod/pdftohtml_mod "' + infile + '" "' + remove_trailing_slash(outdir) + '"')  ## TODO: Specify correct path here!
+		os.system(osc_rule_based_extractor.config.global_pdftohtml_mod_executable + ' "' + infile + '" "' + remove_trailing_slash(outdir) + '"')  ## TODO: Specify correct path here!
 	
 	@staticmethod
 	def fix_strange_encryption(html_dir):

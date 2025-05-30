@@ -24,7 +24,7 @@ class AnalyzerDirectory:
 		for i in range(len(self.htmldirectory.htmlpages)):
 			p = htmldirectory.htmlpages[i]
 			self.analyzer_page.append(AnalyzerPage(p, default_year))
-			if(config.global_analyze_multiple_pages_at_one and i < len(self.htmldirectory.htmlpages) - 1):
+			if(osc_rule_based_extractor.config.global_analyze_multiple_pages_at_one and i < len(self.htmldirectory.htmlpages) - 1):
 				p_mult = HTMLPage.merge(p, htmldirectory.htmlpages[i+1])
 				self.analyzer_page.append(AnalyzerPage(p_mult, default_year))
 		self.default_year = default_year
@@ -62,7 +62,7 @@ class AnalyzerDirectory:
 		for a in self.analyzer_page:
 			res.extend(a.find_kpis(kpispecs))
 			
-		if(config.global_ignore_all_years):
+		if(osc_rule_based_extractor.config.global_ignore_all_years):
 			res = KPIMeasure.remove_all_years(res)
 
 		#print("\n\n\n1:"+str(res))

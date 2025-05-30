@@ -296,19 +296,6 @@ def test_prepare_kpispecs():
 		
 		# Match paragraphs
 		
-		'''
-		kpi.desc_regex_match_list.append(KPISpecs.DescRegExMatch(pattern_raw=r'.*(^|[^a-z])(ghg)\semission[s]?.*',score=2000 ,matching_mode=MATCHING_CAN_INCLUDE, score_decay=0.8, case_sensitive=False, multi_match_decay = 0, letter_decay_hl = 20, letter_decay_disregard = len('(GHG) emissions')))
-			
-		kpi.desc_regex_match_list.append(KPISpecs.DescRegExMatch(pattern_raw=r'.*(gas|(gas).*emissions?))',score=2000 ,matching_mode=MATCHING_MUST_INCLUDE, score_decay=0.8, case_sensitive=False, multi_match_decay = 0, letter_decay_hl = 20, letter_decay_disregard = len('(GHG) emissions')))
-		
-		kpi.desc_regex_match_list.append(KPISpecs.DescRegExMatch(pattern_raw=r'.*(^|[^a-z])(gas|ghg|(ghg)).*emissions.*CO2\s?equivalent.*',score=10000 ,matching_mode=MATCHING_MUST_INCLUDE, score_decay=0.8, case_sensitive=False, multi_match_decay = 0, letter_decay_hl = 20, letter_decay_disregard = len('(GHG) emissions')))
-			
-		kpi.desc_regex_match_list.append(KPISpecs.DescRegExMatch(pattern_raw=r'.*(^|[^a-z])(gas|ghg|(ghg)).*emissions.*(totaled|summed)?.*(equivalent|tonnes)?(CO2)e?.*(equivalent|tonnes)?.*',score=12000 ,matching_mode=MATCHING_MUST_INCLUDE, score_decay=0.8, case_sensitive=False, multi_match_decay = 0, letter_decay_hl = 20, letter_decay_disregard = len('(GHG) emissions')))
-		
-		kpi.desc_regex_match_list.append(KPISpecs.DescRegExMatch(pattern_raw=r'.\d+\s*(thousand|hundred|million).*(gas|ghg|(ghg)).*emissions.*?(totaled|summed)? ',score=12000 ,matching_mode=MATCHING_MUST_INCLUDE, score_decay=0.8, case_sensitive=False, multi_match_decay = 0, letter_decay_hl = 20, letter_decay_disregard = len('(GHG) emissions')))
-		
-		kpi.desc_regex_match_list.append(KPISpecs.DescRegExMatch(pattern_raw=r'.*\s*(thousand|hundred|million)?.*(gas|ghg|(ghg)).*emissions.*(2017)?(totaled|summed|to)?\d+',score=8000 ,matching_mode=MATCHING_MUST_INCLUDE, score_decay=0.8, case_sensitive=False, multi_match_decay = 0, letter_decay_hl = 20, letter_decay_disregard = len('(GHG) emissions')))
-		'''
 		
 		kpi.desc_regex_match_list.append(KPISpecs.DescRegExMatch(pattern_raw=r'.*(^|[^a-z])(greenhouse)?.*(gas|ghg|(ghg)|atmospheric|co2).*emissions?.*',score=7000 ,matching_mode=MATCHING_MAY_INCLUDE, score_decay=0.1, case_sensitive=False, multi_match_decay = 0, letter_decay_hl = 20, letter_decay_disregard = len('gas emissions')))
 		kpi.desc_regex_match_list.append(KPISpecs.DescRegExMatch(pattern_raw=r'.*(^|[^a-z])co2.*emissions?.*tCO2e.*',score=10000 ,matching_mode=MATCHING_MAY_INCLUDE, score_decay=0.1, case_sensitive=False, multi_match_decay = 0, letter_decay_hl = 20, letter_decay_disregard = len('co2 emissions')))
@@ -648,9 +635,9 @@ def load_test_data(test_data_file_path):
 	#print("PDF-Files:")
 	#print(test_data.get_pdf_list())
 	
-	#fix_list = DataImportExport.import_files(r"/home/ismail/Share/initial_data/Europe", config.global_raw_pdf_folder, test_data.get_pdf_list(), 'pdf')
-	fix_list = DataImportExport.import_files(r"//Wwg00m.rootdom.net/afs-team/1200000089/FC/R-M/AZUREPOC/2020/KPIs extraction/Training data/03_Oil Gas sector reports/Europe", config.global_raw_pdf_folder, test_data.get_pdf_list(), 'pdf')
-	#fix_list = DataImportExport.import_files(r"//Wwg00m.rootdom.net/afs-team/1200000089/FC/R-M/AZUREPOC/2020/KPIs extraction/Training data", config.global_raw_pdf_folder, test_data.get_pdf_list(), 'pdf')
+	#fix_list = DataImportExport.import_files(r"/home/ismail/Share/initial_data/Europe", osc_rule_based_extractor.config.global_raw_pdf_folder, test_data.get_pdf_list(), 'pdf')
+	fix_list = DataImportExport.import_files(r"//Wwg00m.rootdom.net/afs-team/1200000089/FC/R-M/AZUREPOC/2020/KPIs extraction/Training data/03_Oil Gas sector reports/Europe", osc_rule_based_extractor.config.global_raw_pdf_folder, test_data.get_pdf_list(), 'pdf')
+	#fix_list = DataImportExport.import_files(r"//Wwg00m.rootdom.net/afs-team/1200000089/FC/R-M/AZUREPOC/2020/KPIs extraction/Training data", osc_rule_based_extractor.config.global_raw_pdf_folder, test_data.get_pdf_list(), 'pdf')
 	test_data.fix_file_names(fix_list)
 	
 	
@@ -691,7 +678,7 @@ def test_result():
 
 def demo():
 
-	pdf_file = config.global_raw_pdf_folder+r'test_bp.pdf'
+	pdf_file = osc_rule_based_extractor.config.global_raw_pdf_folder+r'test_bp.pdf'
 	
 	
 	print_big("Convert PDF to HTML")
@@ -717,7 +704,7 @@ def demo():
 
 	
 def test_main():
-	PDF_FILE = config.global_raw_pdf_folder+r'04_NOVATEK_AR_2016_ENG_11.pdf'
+	PDF_FILE = osc_rule_based_extractor.config.global_raw_pdf_folder+r'04_NOVATEK_AR_2016_ENG_11.pdf'
 
 	#test(PDF_FILE, "38")	
 	

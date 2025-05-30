@@ -29,7 +29,7 @@ from osc_rule_based_extractor import __version__
 def generate_dummy_test_data():
 
 	test_data = TestData()
-	test_data.generate_dummy_test_data(config.global_raw_pdf_folder, '*')
+	test_data.generate_dummy_test_data(osc_rule_based_extractor.config.global_raw_pdf_folder, '*')
 	#print("DATA-SET:")
 	#print(test_data)		
 	
@@ -137,15 +137,15 @@ def main():
 						help='Verbosity level (0=shut up)')
 
 	args = parser.parse_args()
-	config.global_raw_pdf_folder = remove_trailing_slash(get_input_variable(args.raw_pdf_folder, "What is the raw pdf folder?")).replace('\\', '/') + r'/'
-	config.global_working_folder = remove_trailing_slash(get_input_variable(args.working_folder, "What is the working folder?")).replace('\\', '/') + r'/'
-	config.global_output_folder =  remove_trailing_slash(get_input_variable(args.output_folder, "What is the output folder?")).replace('\\', '/') + r'/'
-	config.global_verbosity = args.verbosity
+	osc_rule_based_extractor.config.global_raw_pdf_folder = remove_trailing_slash(get_input_variable(args.raw_pdf_folder, "What is the raw pdf folder?")).replace('\\', '/') + r'/'
+	osc_rule_based_extractor.config.global_working_folder = remove_trailing_slash(get_input_variable(args.working_folder, "What is the working folder?")).replace('\\', '/') + r'/'
+	osc_rule_based_extractor.config.global_output_folder =  remove_trailing_slash(get_input_variable(args.output_folder, "What is the output folder?")).replace('\\', '/') + r'/'
+	osc_rule_based_extractor.config.global_verbosity = args.verbosity
 	
-	os.makedirs(config.global_working_folder, exist_ok=True)
-	os.makedirs(config.global_output_folder, exist_ok=True)
+	os.makedirs(osc_rule_based_extractor.config.global_working_folder, exist_ok=True)
+	os.makedirs(osc_rule_based_extractor.config.global_output_folder, exist_ok=True)
 	
-	# fix config.global_exec_folder and config.global_rendering_font_override
+	# fix osc_rule_based_extractor.config.global_exec_folder and osc_rule_based_extractor.config.global_rendering_font_override
 	path = ''
 	try:
 		path = globals()['_dh'][0]
@@ -153,19 +153,19 @@ def main():
 		path = os.path.dirname(os.path.realpath(__file__))
 	path = remove_trailing_slash(path).replace('\\', '/')
 	
-	config.global_exec_folder = path+ r'/'
-	config.global_rendering_font_override = path + r'/' + config.global_rendering_font_override
-	config.global_approx_font_name = path + r'/' + config.global_approx_font_name
-	config.global_pdftohtml_mod_executable = args.pdftohtml_mod_executable  #path + r'/' + config.global_pdftohtml_mod_executable
+	osc_rule_based_extractor.config.global_exec_folder = path+ r'/'
+	osc_rule_based_extractor.config.global_rendering_font_override = path + r'/' + osc_rule_based_extractor.config.global_rendering_font_override
+	osc_rule_based_extractor.config.global_approx_font_name = path + r'/' + osc_rule_based_extractor.config.global_approx_font_name
+	osc_rule_based_extractor.config.global_pdftohtml_mod_executable = args.pdftohtml_mod_executable  #path + r'/' + osc_rule_based_extractor.config.global_pdftohtml_mod_executable
 	
-	print_verbose(1, "Using config.global_exec_folder=" + config.global_exec_folder)
-	print_verbose(1, "Using config.global_raw_pdf_folder=" + config.global_raw_pdf_folder)
-	print_verbose(1, "Using config.global_working_folder=" + config.global_working_folder)
-	print_verbose(1, "Using config.global_output_folder=" + config.global_output_folder)
-	print_verbose(1, "Using config.global_verbosity=" + str(config.global_verbosity))
-	print_verbose(1, "Using config.global_rendering_font_override=" + config.global_rendering_font_override)
-	print_verbose(1, "Using config.global_approx_font_name=" + config.global_approx_font_name)
-	print_verbose(1, "Using config.global_pdftohtml_mod_executable=" + config.global_pdftohtml_mod_executable)
+	print_verbose(1, "Using osc_rule_based_extractor.config.global_exec_folder=" + osc_rule_based_extractor.config.global_exec_folder)
+	print_verbose(1, "Using osc_rule_based_extractor.config.global_raw_pdf_folder=" + osc_rule_based_extractor.config.global_raw_pdf_folder)
+	print_verbose(1, "Using osc_rule_based_extractor.config.global_working_folder=" + osc_rule_based_extractor.config.global_working_folder)
+	print_verbose(1, "Using osc_rule_based_extractor.config.global_output_folder=" + osc_rule_based_extractor.config.global_output_folder)
+	print_verbose(1, "Using osc_rule_based_extractor.config.global_verbosity=" + str(osc_rule_based_extractor.config.global_verbosity))
+	print_verbose(1, "Using osc_rule_based_extractor.config.global_rendering_font_override=" + osc_rule_based_extractor.config.global_rendering_font_override)
+	print_verbose(1, "Using osc_rule_based_extractor.config.global_approx_font_name=" + osc_rule_based_extractor.config.global_approx_font_name)
+	print_verbose(1, "Using osc_rule_based_extractor.config.global_pdftohtml_mod_executable=" + osc_rule_based_extractor.config.global_pdftohtml_mod_executable)
 
 	#test_data = load_test_data(r'test_data/aggregated_complete_samples_new.csv')
 	test_data = generate_dummy_test_data()
@@ -196,16 +196,16 @@ def main():
 	
 	overall_kpiresults = KPIResultSet()
 	
-	info_file_contents = DataImportExport.load_info_file_contents(remove_trailing_slash(config.global_working_folder) + '/info.json')
+	info_file_contents = DataImportExport.load_info_file_contents(remove_trailing_slash(osc_rule_based_extractor.config.global_working_folder) + '/info.json')
 	
 	time_start = time.time()
 	
 	for pdf in pdfs:
 		kpiresults = KPIResultSet(kpimeasures = [])
-		cur_kpiresults = analyze_pdf(config.global_raw_pdf_folder + pdf, kpis, DEFAULT_YEAR, info_file_contents, wildcard_restrict_page='*', assume_conversion_done=False, force_parse_pdf=False) ### TODO:  Modify * in order to analyze specfic page, e.g.:  *00042 ###
+		cur_kpiresults = analyze_pdf(osc_rule_based_extractor.config.global_raw_pdf_folder + pdf, kpis, DEFAULT_YEAR, info_file_contents, wildcard_restrict_page='*', assume_conversion_done=False, force_parse_pdf=False) ### TODO:  Modify * in order to analyze specfic page, e.g.:  *00042 ###
 		kpiresults.extend(cur_kpiresults)
 		overall_kpiresults.extend(cur_kpiresults)
-		kpiresults.save_to_csv_file(config.global_output_folder + pdf + r'.csv')
+		kpiresults.save_to_csv_file(osc_rule_based_extractor.config.global_output_folder + pdf + r'.csv')
 		print_verbose(1, "RESULT FOR " + pdf)
 		print_verbose(1, kpiresults)
 
@@ -216,8 +216,8 @@ def main():
 	print_big("FINAL OVERALL-RESULT", do_wait = False)
 	print_verbose(1, overall_kpiresults)
 	
-	#overall_kpiresults.save_to_file(config.global_output_folder + r'kpiresults_test_tmp.json')
-	overall_kpiresults.save_to_csv_file(config.global_output_folder + r'kpiresults_tmp.csv')
+	#overall_kpiresults.save_to_file(osc_rule_based_extractor.config.global_output_folder + r'kpiresults_test_tmp.json')
+	overall_kpiresults.save_to_csv_file(osc_rule_based_extractor.config.global_output_folder + r'kpiresults_tmp.csv')
 	
 	
 	total_time = time_finish - time_start
