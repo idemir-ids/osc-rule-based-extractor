@@ -5,8 +5,8 @@
 # Date   : 02.08.2020
 # ============================================================================================================================
 
-from ConsoleTable import *
-from Format_Analyzer import *
+from osc_rule_based_extractor.ConsoleTable import *
+from osc_rule_based_extractor.Format_Analyzer import *
 
 class TestDataSample:
 

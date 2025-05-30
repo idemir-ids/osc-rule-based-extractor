@@ -6,9 +6,9 @@
 # ============================================================================================================================
 
 
-from globals import *
-from KPIMeasure import *
-from ConsoleTable import *
+from osc_rule_based_extractor.globals import *
+from osc_rule_based_extractor.KPIMeasure import *
+from osc_rule_based_extractor.ConsoleTable import *
 
 class KPIResultSet:
 

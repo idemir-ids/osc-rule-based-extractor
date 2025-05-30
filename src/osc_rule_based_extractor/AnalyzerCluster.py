@@ -8,11 +8,11 @@
 # ============================================================================================================================
 
 
-from HTMLTable import *
-from HTMLPage import *
-from KPISpecs import *
-from KPIMeasure import *
-from Format_Analyzer import *
+from osc_rule_based_extractor.HTMLTable import *
+from osc_rule_based_extractor.HTMLPage import *
+from osc_rule_based_extractor.KPISpecs import *
+from osc_rule_based_extractor.KPIMeasure import *
+from osc_rule_based_extractor.Format_Analyzer import *
 
 
 

@@ -8,10 +8,10 @@
 # ============================================================================================================================
 
 
-from HTMLTable import *
-from HTMLPage import *
-from KPISpecs import *
-from KPIMeasure import *
+from osc_rule_based_extractor.HTMLTable import *
+from osc_rule_based_extractor.HTMLPage import *
+from osc_rule_based_extractor.KPISpecs import *
+from osc_rule_based_extractor.KPIMeasure import *
 
 HIERARCHY_DIR_UP = 0
 HIERARCHY_DIR_LEFT = 1

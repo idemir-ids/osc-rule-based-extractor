@@ -8,8 +8,8 @@
 # ============================================================================================================================
 
 
-from AnalyzerPage import *
-from HTMLDirectory import *
+from osc_rule_based_extractor.AnalyzerPage import *
+from osc_rule_based_extractor.HTMLDirectory import *
 
 
 class AnalyzerDirectory:

@@ -8,9 +8,9 @@
 # Note   : 1 HTMLPage consistens of * HTMLTables
 # ============================================================================================================================
 
-from globals import *
-from HTMLItem import *
-from ConsoleTable import *
+from osc_rule_based_extractor.globals import *
+from osc_rule_based_extractor.HTMLItem import *
+from osc_rule_based_extractor.ConsoleTable import *
 
 
 

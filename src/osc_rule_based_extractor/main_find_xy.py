@@ -6,12 +6,12 @@
 # ============================================================================================================================
 
 # TODO:
-from globals import *
+from osc_rule_based_extractor.globals import *
 import argparse
-from HTMLDirectory import *
-from HTMLPage import *
-from TestData import *
-from test import *
+from osc_rule_based_extractor.HTMLDirectory import *
+from osc_rule_based_extractor.HTMLPage import *
+from osc_rule_based_extractor.TestData import *
+from osc_rule_based_extractor.test import *
 import config
 import re
 import pandas as pd

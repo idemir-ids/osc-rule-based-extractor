@@ -10,9 +10,9 @@
 # Note   : 1 HTMLDirectory consistens of * HTMLPages
 # ============================================================================================================================
 
-from globals import *
-from HTMLTable import *
-from HTMLCluster import *
+from osc_rule_based_extractor.globals import *
+from osc_rule_based_extractor.HTMLTable import *
+from osc_rule_based_extractor.HTMLCluster import *
 import copy
 		
 
@@ -664,7 +664,7 @@ class HTMLPage:
 				if(not Format_Analyzer.looks_words(self.items[cur_item_id].txt)):
 					continue # only text
 			
-				print_verbose(9, "--> mark_other_text_components \ multi-rows headline: "+str(self.items[cur_item_id]))
+				print_verbose(9, r"--> mark_other_text_components \ multi-rows headline: "+str(self.items[cur_item_id]))
 				next_item_id, next_y = cur_lines[i+1]	
 
 				if(self.items[next_item_id].category != CAT_RUNNING_TEXT):
@@ -1430,12 +1430,12 @@ class HTMLPage:
 	@staticmethod
 	def parse_html_file(fonts_dir, htmlfile):
 		pattern_pgnum = re.compile('.*page([0-9]+)\\.html')
-		pattern_background = re.compile('<img id="background" style="position:absolute; (left|right):0px; (top|bottom):0px;" width="([0-9]+)" height="([0-9]+)" src="page([0-9]+)\.png">')
-		pattern_div  = re.compile('<div class="txt" style="position:absolute; (left|right):([0-9]+)px; top:([0-9]+)px;">(<span id="f[0-9]+" style="font-size:[0-9]+px;vertical-align:.*;color:rgba\([0-9]+,[0-9]+,[0-9]+,[0-9]+\);">.*</span>)</div>')
-		pattern_span = re.compile('<span id="f([0-9]+)" style="font-size:([0-9]+)px;vertical-align:.*;color:rgba\(([0-9]+),([0-9]+),([0-9]+),([0-9]+)\);">(.*)')
+		pattern_background = re.compile(r'<img id="background" style="position:absolute; (left|right):0px; (top|bottom):0px;" width="([0-9]+)" height="([0-9]+)" src="page([0-9]+)\.png">')
+		pattern_div  = re.compile(r'<div class="txt" style="position:absolute; (left|right):([0-9]+)px; top:([0-9]+)px;">(<span id="f[0-9]+" style="font-size:[0-9]+px;vertical-align:.*;color:rgba\([0-9]+,[0-9]+,[0-9]+,[0-9]+\);">.*</span>)</div>')
+		pattern_span = re.compile(r'<span id="f([0-9]+)" style="font-size:([0-9]+)px;vertical-align:.*;color:rgba\(([0-9]+),([0-9]+),([0-9]+),([0-9]+)\);">(.*)')
 		# <div class="txt" style="position:absolute; left:42px; top:169px;"><span id="f4" style="font-size:8px;vertical-align:baseline;color:rgba(0,0,0,1);">direct GHGs)</span></div>
 		
-		pattern_bbox = re.compile('\(([0-9]+\.[0-9]+),([0-9]+\.[0-9]+)\)-\(([0-9]+\.[0-9]+),([0-9]+\.[0-9]+)\)-->(.*)')
+		pattern_bbox = re.compile(r'\(([0-9]+\.[0-9]+),([0-9]+\.[0-9]+)\)-\(([0-9]+\.[0-9]+),([0-9]+\.[0-9]+)\)-->(.*)')
 		#<!--BBox:(239.92,769.53)-(250.03,776.52)-->
 		
 		pattern_font  = re.compile('#f([0-9]+) { font-family:ff([0-9]+)[^0-9].*; }')

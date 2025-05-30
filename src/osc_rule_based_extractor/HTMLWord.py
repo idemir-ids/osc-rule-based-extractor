@@ -7,8 +7,8 @@
 # Note   : 1 HTMLItem consistens of * HTMLWords
 # ============================================================================================================================
 
-from globals import *
-from Rect import *
+from osc_rule_based_extractor.globals import *
+from osc_rule_based_extractor.Rect import *
 
 
 class HTMLWord:

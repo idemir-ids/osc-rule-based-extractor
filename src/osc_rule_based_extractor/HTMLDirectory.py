@@ -8,9 +8,9 @@
 # Note   : 1 HTMLDirectory corresponds to 1 PDF-File
 # ============================================================================================================================
 
-from globals import *
-from HTMLPage import *
-from Format_Analyzer import *
+from osc_rule_based_extractor.globals import *
+from osc_rule_based_extractor.HTMLPage import *
+from osc_rule_based_extractor.Format_Analyzer import *
 		
 
 class HTMLDirectory:

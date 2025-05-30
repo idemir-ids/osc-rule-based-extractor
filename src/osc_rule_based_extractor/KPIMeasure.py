@@ -6,8 +6,8 @@
 # ============================================================================================================================
 
 
-from globals import *
-from Format_Analyzer import *
+from osc_rule_based_extractor.globals import *
+from osc_rule_based_extractor.Format_Analyzer import *
 
 class KPIMeasure:
 	kpi_id		= None

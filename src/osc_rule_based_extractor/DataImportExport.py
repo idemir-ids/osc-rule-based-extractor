@@ -5,8 +5,8 @@
 # Date   : 05.08.2020
 # ============================================================================================================================
 
-from globals import *
-from Format_Analyzer import *
+from osc_rule_based_extractor.globals import *
+from osc_rule_based_extractor.Format_Analyzer import *
 
 class DataImportExport:
 

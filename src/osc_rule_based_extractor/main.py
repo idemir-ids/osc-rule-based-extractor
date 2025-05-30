@@ -8,16 +8,18 @@
 
 # TODO:
 
-from globals import *
+from osc_rule_based_extractor.globals import *
 import argparse
-from HTMLDirectory import *
-from AnalyzerDirectory import *
-from KPIResultSet import *
-from TestData import *
-from DataImportExport import *
-from test import * #only for testing / debugging purpose
-import config
+from osc_rule_based_extractor.HTMLDirectory import *
+from osc_rule_based_extractor.AnalyzerDirectory import *
+from osc_rule_based_extractor.KPIResultSet import *
+from osc_rule_based_extractor.TestData import *
+from osc_rule_based_extractor.DataImportExport import *
+from osc_rule_based_extractor.test import * #only for testing / debugging purpose
+import osc_rule_based_extractor.config
 
+
+from osc_rule_based_extractor import __version__
 
 	
 	
@@ -225,7 +227,17 @@ def main():
 	
 	
 
-main()	
 
 
+if __name__ == "__main__":
+    # ^  This is a guard statement that will prevent the following code from
+    #    being executed in the case someone imports this file instead of
+    #    executing it as a script.
+    #    https://docs.python.org/3/library/__main__.html
 
+    # After installing your project with pip, users can also run your Python
+    # modules as scripts via the ``-m`` flag, as defined in PEP 338::
+    #
+    #     python -m osc_rule_based_extractor.skeleton 42
+    #
+    main()

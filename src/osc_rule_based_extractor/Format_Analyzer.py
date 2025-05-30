@@ -5,7 +5,7 @@
 # Date   : 12.06.2020
 # ============================================================================================================================
 
-from globals import *
+from osc_rule_based_extractor.globals import *
 
 
 		
@@ -21,8 +21,8 @@ class Format_Analyzer:
 
 	pattern_year_in_txt = re.compile(r'(19[8-9][0-9]|20[0-9][0-9])') #1980-2099
 	pattern_null = re.compile(r'^(null|n/a|na|-*|\.*|,*|;*)$')
-	pattern_whitespace = re.compile("^\s+|\s+$")
-	pattern_ends_with_full_stop = re.compile(".*\.$")
+	pattern_whitespace = re.compile(r"^\s+|\s+$")
+	pattern_ends_with_full_stop = re.compile(r".*\.$")
 	pattern_pagenum = re.compile(r'^[0-9]{1,3}$')
 	pattern_non_numeric_char = re.compile(r'[^0-9\-\.]')
 	pattern_file_path = re.compile(r'(.*/)(.*)\.(.*)')

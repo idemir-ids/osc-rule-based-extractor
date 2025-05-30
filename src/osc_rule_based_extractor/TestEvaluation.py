@@ -5,10 +5,10 @@
 # Date   : 10.09.2020
 # ============================================================================================================================
 
-from TestData import *
-from Format_Analyzer import *
-from KPIResultSet import *
-from ConsoleTable import *
+from osc_rule_based_extractor.TestData import *
+from osc_rule_based_extractor.Format_Analyzer import *
+from osc_rule_based_extractor.KPIResultSet import *
+from osc_rule_based_extractor.ConsoleTable import *
 
 class TestEvaluation:
 

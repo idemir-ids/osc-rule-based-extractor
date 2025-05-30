@@ -9,9 +9,9 @@
 # ============================================================================================================================
 
 
-from HTMLPage import *
-from AnalyzerTable import *
-from AnalyzerCluster import *
+from osc_rule_based_extractor.HTMLPage import *
+from osc_rule_based_extractor.AnalyzerTable import *
+from osc_rule_based_extractor.AnalyzerCluster import *
 
 class AnalyzerPage:
 	htmlpage		= None
