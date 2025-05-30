@@ -217,7 +217,7 @@ def main():
 	print_verbose(1, overall_kpiresults)
 	
 	#overall_kpiresults.save_to_file(osc_rule_based_extractor.config.global_output_folder + r'kpiresults_test_tmp.json')
-	overall_kpiresults.save_to_csv_file(osc_rule_based_extractor.config.global_output_folder + r'kpiresults_tmp.csv')
+	#overall_kpiresults.save_to_csv_file(osc_rule_based_extractor.config.global_output_folder + r'kpiresults_tmp.csv')
 	
 	
 	total_time = time_finish - time_start
