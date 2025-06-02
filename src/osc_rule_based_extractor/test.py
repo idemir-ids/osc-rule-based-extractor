@@ -608,10 +608,10 @@ def test_prepare_kpispecs():
 	res.append(prepare_kpi_7_Scope2_GHGs_emissions())
 	res.append(prepare_kpi_8_Scope3_GHGs_emissions())
 	res.append(prepare_kpi_12_Target_Year_Reduction())
-	#res.append(prepare_kpi_9991_CDP_0_4_Currency())
-	#res.append(prepare_kpi_9992_CDP_4_1_Emiss_Target())
-	#res.append(prepare_kpi_9993_CDP_4_2b_Year_Target_Set())
-	#res.append(prepare_kpi_9994_CDP_4_2b_Base_Year())
+	res.append(prepare_kpi_9991_CDP_0_4_Currency())
+	res.append(prepare_kpi_9992_CDP_4_1_Emiss_Target())
+	res.append(prepare_kpi_9993_CDP_4_2b_Year_Target_Set())
+	res.append(prepare_kpi_9994_CDP_4_2b_Base_Year())
 	
 	return res
 
