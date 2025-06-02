@@ -161,15 +161,15 @@ class Format_Analyzer:
 			return False #strange: less than 50% are letters
 		if(num_space < 5):
 			return False #only 5 words or less
-		if(num_comma / txtlen < 0.004 and num_full_stops / txtlen < 0.002):
+		if(num_comma / txtlen < 0.004 or num_full_stops / txtlen < 0.005):
 			return False #too few commans / full stops
 		if(ends_with_full_stop):
 			#looks like a sentence
 			return True
 		
 		#does not end with full stop, so we require more conditons to hold
-		return ((num_full_stops > 2) or \
-		       (num_full_stops > 1 and num_comma > 1)) and \
+		return ((num_full_stops > 5) or \
+		       (num_full_stops > 2 and num_comma > 1)) and \
 			   (num_letters > 30) and \
 			   (num_space > 10)
 
