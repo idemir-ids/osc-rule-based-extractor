@@ -47,9 +47,9 @@ class AnalyzerPage:
 		for a in self.analyzer_table:
 			res.extend(a.find_kpis(kpispecs))
 		
-		# 2. Figures and Text (used for CDP reports)
-		#for a in self.analyzer_cluster:
-		#	res.extend(a.find_kpis(kpispecs))
+		# 2. Figures and Text (used, for example, for CDP reports)
+		for a in self.analyzer_cluster:
+			res.extend(a.find_kpis(kpispecs))
 		
 		# 3. Regular text
 		# TODO
