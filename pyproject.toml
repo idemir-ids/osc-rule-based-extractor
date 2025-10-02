@@ -3,9 +3,10 @@ name = "osc-rule-based-extractor"
 version = "0.1.0"
 description = "OS-Climate Data Extraction Tool"
 authors = [
+    {name = "Ismail Demir", email = "ismail.demir@investmentdatservices.com"},
     {name = "David Besslich", email = "90916810+DaBeIDS@users.noreply.github.com"},
 ]
-requires-python = ">=3.9"
+requires-python = ">=3.12"
 readme = "README.rst"
 license = {file = "LICENSE.txt"}
 classifiers = [
@@ -18,6 +19,7 @@ classifiers = [
   "Programming Language :: Python",
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.12",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.9",
@@ -25,6 +27,18 @@ classifiers = [
   "Topic :: Scientific/Engineering",
   "Topic :: Software Development",
 ]
+dependencies = [
+    "numpy",
+    "jsonpickle",
+    "scipy",
+    "Pillow",
+    "MarkupSafe",
+    "pandas",
+    "boto3",
+    "requests",
+    "pyyaml",
+]
+
 
 [project.urls]
 Homepage = "https://github.com/os-climate/osc-rule-based-extractor"
@@ -42,7 +56,7 @@ build-backend = "pdm.backend"
 license-files = ["LICENSES.txt"]
 
 [project.scripts]
-osc-rule-based-extractor = "osc_rule_based_extractor.skeleton:run"
+osc-rule-based-extractor = "osc_rule_based_extractor.main:main"
 
 [project.optional-dependencies]
 dev = [

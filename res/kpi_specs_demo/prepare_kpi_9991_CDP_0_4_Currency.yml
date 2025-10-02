@@ -1,0 +1,40 @@
+# ==================================================================
+# KPI Definition
+# C0.4 Currency of CDP Report
+# Author: Mohamed Bouhali
+# ==================================================================
+
+general:
+  kpi_id: 9991
+  kpi_name: 'C0.4 Currency of CDP Report'
+  value_must_be_numeric: false
+  minimum_score: 500
+  minimum_score_desc_regex: 250
+
+desc_regex_match_list:
+  entry_1:
+    pattern_raw: '.*\(c0\.4\) select the currency used.*'
+    score: 8000
+    matching_mode: MATCHING_CAN_INCLUDE
+    score_decay: 0.1
+    case_sensitive: false
+    multi_match_decay: 0
+    letter_decay_hl: 20
+    letter_decay_disregard: 87
+  entry_2:
+    pattern_raw: '.*\(c0\.4\).*'
+    score: 2000
+    matching_mode: MATCHING_MUST_INCLUDE
+    score_decay: 0.1
+    case_sensitive: false
+    multi_match_decay: 0
+    letter_decay_hl: 20
+    letter_decay_disregard: 87
+
+value_regex_match_list:
+  entry_1:
+    type: KPISpecs.GeneralRegExMatch
+    args:
+      pattern_raw: '[A-Z]{3,3}'
+      case_sensitive: false
+      comment:  must be 3 uppercase letters
