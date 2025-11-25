@@ -7,6 +7,8 @@ On June 26 2024, Linux Foundation announced the merger of its financial services
 osc-rule-based-extractor
 ========================
 
+|osc-climate-project| |osc-climate-slack| |osc-climate-github| |pypi| |pdm| |PyScaffold| |OpenSSF Scorecard|
+
 
 Overview
 --------
@@ -215,11 +217,11 @@ Integration notes
 Troubleshooting
 ---------------
 
-| **``pdftohtml_mod`` not executable:**
+| ** pdftohtml_mod not executable:**
 | Run ``chmod +x /path/to/pdftohtml_mod`` and ensure the path matches
   ``--pdftohtml_mod`` executable, or you might need to compile this
   binary on your OS.
-| **Missing ``libpng12`` or incompatible version:**
+| **Missing libpng12 or incompatible version:**
 | Install a distro-compatible ``libpng12`` package. The example URL
   provided targets a specific Ubuntu release; adjust for your OS.
 | **Font or layout issues:**
