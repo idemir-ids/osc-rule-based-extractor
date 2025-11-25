@@ -217,7 +217,7 @@ Integration notes
 Troubleshooting
 ---------------
 
-| ** pdftohtml_mod not executable:**
+| **pdftohtml_mod not executable:**
 | Run ``chmod +x /path/to/pdftohtml_mod`` and ensure the path matches
   ``--pdftohtml_mod`` executable, or you might need to compile this
   binary on your OS.
