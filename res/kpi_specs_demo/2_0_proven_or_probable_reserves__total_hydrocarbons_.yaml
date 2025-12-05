@@ -1,0 +1,163 @@
+kpi_id: 2.0
+kpi_name: Proven or probable reserves (Total hydrocarbons)
+desc_regex_match_list:
+- pattern_raw: .*prov.*develop.*undevelop.*reserv.*
+  score: 12000
+  matching_mode: 2
+  score_decay: 0.8
+  case_sensitive: false
+  multi_match_decay: 0
+  letter_decay_hl: 2.049489961842071
+  letter_decay_disregard: 34
+  count_if_matched: true
+  allow_matching_against_concat_txt: false
+- pattern_raw: .*prov.*reserv.*
+  score: 12000
+  matching_mode: 1
+  score_decay: 0.8
+  case_sensitive: false
+  multi_match_decay: 0
+  letter_decay_hl: 2.0666500612055554
+  letter_decay_disregard: 15
+  count_if_matched: true
+  allow_matching_against_concat_txt: false
+- pattern_raw: .*total.*hydrocarbon.*
+  score: 15000
+  matching_mode: 1
+  score_decay: 0.8
+  case_sensitive: false
+  multi_match_decay: 0
+  letter_decay_hl: 2.0666500612055554
+  letter_decay_disregard: 17
+  count_if_matched: true
+  allow_matching_against_concat_txt: false
+- pattern_raw: .*(total|combine).*
+  score: 2500
+  matching_mode: 2
+  score_decay: 0.8
+  case_sensitive: false
+  multi_match_decay: 0.9
+  letter_decay_hl: 2.1020157257540357
+  letter_decay_disregard: 5
+  count_if_matched: true
+  allow_matching_against_concat_txt: false
+- pattern_raw: .*total.*(prov|prob).*reserv
+  score: 5000
+  matching_mode: 1
+  score_decay: 0.8
+  case_sensitive: false
+  multi_match_decay: 0
+  letter_decay_hl: 2.0666500612055554
+  letter_decay_disregard: 21
+  count_if_matched: true
+  allow_matching_against_concat_txt: false
+- pattern_raw: .*total.*reserv
+  score: 4000
+  matching_mode: 1
+  score_decay: 0.8
+  case_sensitive: false
+  multi_match_decay: 0
+  letter_decay_hl: 2.0666500612055554
+  letter_decay_disregard: 14
+  count_if_matched: true
+  allow_matching_against_concat_txt: false
+- pattern_raw: .*2p[\s]*reserv.*
+  score: 4000
+  matching_mode: 1
+  score_decay: 0.8
+  case_sensitive: false
+  multi_match_decay: 0
+  letter_decay_hl: 2.1020157257540357
+  letter_decay_disregard: 11
+  count_if_matched: true
+  allow_matching_against_concat_txt: false
+- pattern_raw: .*prov.*probab.*
+  score: 3000
+  matching_mode: 1
+  score_decay: 0.8
+  case_sensitive: false
+  multi_match_decay: 0
+  letter_decay_hl: 2.1020157257540357
+  letter_decay_disregard: 18
+  count_if_matched: true
+  allow_matching_against_concat_txt: false
+- pattern_raw: (.*(prov.*prob|prob.*prov).*|^((?!pro(b|v)).)*$)
+  score: 1
+  matching_mode: 4
+  score_decay: 0
+  case_sensitive: false
+  multi_match_decay: 0
+  letter_decay_hl: 2.1020157257540357
+  letter_decay_disregard: 0
+  count_if_matched: false
+  allow_matching_against_concat_txt: true
+value_regex_match_list: []
+unit_regex_match_list:
+- pattern_raw: .*(boe|barrel.*oil|(b|m)illion.*barrel).*
+  case_sensitive: false
+value_must_be_numeric: true
+value_percentage_match: 0
+value_must_be_year: false
+anywhere_regex_match_list:
+- general_match:
+    pattern_raw: .*exploration.*
+    case_sensitive: false
+  distance_mode: 1
+  score: 2000
+  matching_mode: 1
+  score_decay: 0.9
+  multi_match_decay: 0.5
+  letter_decay_hl: 2.2171376698777805
+  letter_decay_disregard: 11
+- general_match:
+    pattern_raw: .*upstream.*
+    case_sensitive: false
+  distance_mode: 1
+  score: 2000
+  matching_mode: 1
+  score_decay: 0.9
+  multi_match_decay: 0.5
+  letter_decay_hl: 2.2171376698777805
+  letter_decay_disregard: 8
+- general_match:
+    pattern_raw: ^balance sheet.*
+    case_sensitive: false
+  distance_mode: 1
+  score: 2000
+  matching_mode: 3
+  score_decay: 0.9
+  multi_match_decay: 0.5
+  letter_decay_hl: 2.2171376698777805
+  letter_decay_disregard: 0
+- general_match:
+    pattern_raw: .*((^|[^a-z])prov|(^|[^a-z])2p($|[^a-z])).*
+    case_sensitive: false
+  distance_mode: 1
+  score: 500
+  matching_mode: 0
+  score_decay: 0.9
+  multi_match_decay: 0.2
+  letter_decay_hl: 2.1294896717256204
+  letter_decay_disregard: 4
+- general_match:
+    pattern_raw: .*((^|[^a-z])prob|(^|[^a-z])2p($|[^a-z])).*
+    case_sensitive: false
+  distance_mode: 1
+  score: 500
+  matching_mode: 0
+  score_decay: 0.9
+  multi_match_decay: 0.2
+  letter_decay_hl: 2.1294896717256204
+  letter_decay_disregard: 4
+- general_match:
+    pattern_raw: .*((^|[^a-z])pro(b|v).*(^|[^a-z])pro(b|v)|(^|[^a-z])2p($|[^a-z])).*
+    case_sensitive: false
+  distance_mode: 1
+  score: 2500
+  matching_mode: 1
+  score_decay: 0.9
+  multi_match_decay: 0.2
+  letter_decay_hl: 2.1020157257540357
+  letter_decay_disregard: 9
+minimum_score: 500
+minimum_score_desc_regex: 250

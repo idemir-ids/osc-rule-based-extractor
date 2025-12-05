@@ -1,0 +1,53 @@
+kpi_id: 12
+kpi_name: Target Year Reduction
+desc_regex_match_list:
+- pattern_raw: .*targeted reduction from base year.*
+  score: 8000
+  matching_mode: 0
+  score_decay: 0.1
+  case_sensitive: false
+  multi_match_decay: 0
+  letter_decay_hl: 2.049489961842071
+  letter_decay_disregard: 33
+  count_if_matched: true
+  allow_matching_against_concat_txt: false
+value_regex_match_list:
+- pattern_raw: '[0-9]{2,3}(\.[0-9]+)?'
+  case_sensitive: false
+unit_regex_match_list: []
+value_must_be_numeric: true
+value_percentage_match: 0
+value_must_be_year: false
+anywhere_regex_match_list:
+- general_match:
+    pattern_raw: .*target year.*
+    case_sensitive: false
+  distance_mode: 1
+  score: 5000
+  matching_mode: 0
+  score_decay: 0.9
+  multi_match_decay: 0.2
+  letter_decay_hl: 2.1294896717256204
+  letter_decay_disregard: 4
+- general_match:
+    pattern_raw: .*scope 1.*
+    case_sensitive: false
+  distance_mode: 1
+  score: 5000
+  matching_mode: 2
+  score_decay: 0.9
+  multi_match_decay: 0.2
+  letter_decay_hl: 2.1294896717256204
+  letter_decay_disregard: 4
+- general_match:
+    pattern_raw: .*c4\.1a.*
+    case_sensitive: false
+  distance_mode: 1
+  score: 5000
+  matching_mode: 2
+  score_decay: 0.9
+  multi_match_decay: 0.2
+  letter_decay_hl: 2.1294896717256204
+  letter_decay_disregard: 4
+minimum_score: 500
+minimum_score_desc_regex: 250

@@ -9,7 +9,7 @@
 from osc_rule_based_extractor.globals import *
 from osc_rule_based_extractor.Format_Analyzer import *
 from osc_rule_based_extractor.HTMLPage import *
-
+import yaml
 
 # Matching modes:
 MATCHING_MUST_INCLUDE 	= 0 # no match, if not included
@@ -366,4 +366,150 @@ class KPISpecs:
 		#converting to standardized numbers could be done here
 		return val_str
 	
+	def gen_file_name(self):
+		return (re.sub(r'[^a-zA-Z0-9]', '_', (str(self.kpi_id) + '_' + str(self.kpi_name))) + '.yaml').lower()
 	
+	def to_dict(self):
+		"""Convert KPISpecs instance to a dictionary for YAML export"""
+		return {
+			'kpi_id': self.kpi_id,
+			'kpi_name': self.kpi_name,
+			'desc_regex_match_list': [
+				{
+					'pattern_raw': item.pattern_raw,
+					'score': item.score,
+					'matching_mode': item.matching_mode,
+					'score_decay': item.score_decay,
+					'case_sensitive': item.case_sensitive,
+					'multi_match_decay': item.multi_match_decay,
+					'letter_decay_hl': self._calculate_letter_decay_hl(item.letter_decay),
+					'letter_decay_disregard': item.letter_decay_disregard,
+					'count_if_matched': item.count_if_matched,
+					'allow_matching_against_concat_txt': item.allow_matching_against_concat_txt
+				}
+				for item in self.desc_regex_match_list
+			],
+			'value_regex_match_list': [
+				{
+					'pattern_raw': item.pattern_raw,
+					'case_sensitive': item.case_sensitive
+				}
+				for item in self.value_regex_match_list
+			],
+			'unit_regex_match_list': [
+				{
+					'pattern_raw': item.pattern_raw,
+					'case_sensitive': item.case_sensitive
+				}
+				for item in self.unit_regex_match_list
+			],
+			'value_must_be_numeric': self.value_must_be_numeric,
+			'value_percentage_match': self.value_percentage_match,
+			'value_must_be_year': self.value_must_be_year,
+			'anywhere_regex_match_list': [
+				{
+					'general_match': {
+						'pattern_raw': item.general_match.pattern_raw,
+						'case_sensitive': item.general_match.case_sensitive
+					},
+					'distance_mode': item.distance_mode,
+					'score': item.score,
+					'matching_mode': item.matching_mode,
+					'score_decay': item.score_decay,
+					'multi_match_decay': item.multi_match_decay,
+					'letter_decay_hl': self._calculate_letter_decay_hl(item.letter_decay),
+					'letter_decay_disregard': item.letter_decay_disregard
+				}
+				for item in self.anywhere_regex_match_list
+			],
+			'minimum_score': self.minimum_score,
+			'minimum_score_desc_regex': self.minimum_score_desc_regex
+		}
+
+	@staticmethod
+	def _calculate_letter_decay_hl(letter_decay):
+		"""Reverse calculate half-life from letter_decay value"""
+		if letter_decay == 1:
+			return 0
+		return 1.0 / (abs(0.5 ** (1.0 / letter_decay)) if letter_decay != 0 else 1)
+
+	@classmethod
+	def from_dict(cls, data):
+		"""Create KPISpecs instance from dictionary (loaded from YAML)"""
+		kpi = cls()
+		kpi.kpi_id = data['kpi_id']
+		kpi.kpi_name = data['kpi_name']
+
+		# Load desc_regex_match_list
+		for item_data in data.get('desc_regex_match_list', []):
+			kpi.desc_regex_match_list.append(
+				cls.DescRegExMatch(
+					pattern_raw=item_data['pattern_raw'],
+					score=item_data['score'],
+					matching_mode=item_data['matching_mode'],
+					score_decay=item_data['score_decay'],
+					case_sensitive=item_data['case_sensitive'],
+					multi_match_decay=item_data['multi_match_decay'],
+					letter_decay_hl=item_data['letter_decay_hl'],
+					letter_decay_disregard=item_data.get('letter_decay_disregard', 0),
+					count_if_matched=item_data.get('count_if_matched', True),
+					allow_matching_against_concat_txt=item_data.get('allow_matching_against_concat_txt', False)
+				)
+			)
+
+		# Load value_regex_match_list
+		for item_data in data.get('value_regex_match_list', []):
+			kpi.value_regex_match_list.append(
+				cls.GeneralRegExMatch(
+					pattern_raw=item_data['pattern_raw'],
+					case_sensitive=item_data['case_sensitive']
+				)
+			)
+
+		# Load unit_regex_match_list
+		for item_data in data.get('unit_regex_match_list', []):
+			kpi.unit_regex_match_list.append(
+				cls.GeneralRegExMatch(
+					pattern_raw=item_data['pattern_raw'],
+					case_sensitive=item_data['case_sensitive']
+				)
+			)
+
+		# Load anywhere_regex_match_list
+		for item_data in data.get('anywhere_regex_match_list', []):
+			general_match = cls.GeneralRegExMatch(
+				pattern_raw=item_data['general_match']['pattern_raw'],
+				case_sensitive=item_data['general_match']['case_sensitive']
+			)
+			kpi.anywhere_regex_match_list.append(
+				cls.AnywhereRegExMatch(
+					general_match=general_match,
+					distance_mode=item_data['distance_mode'],
+					score=item_data['score'],
+					matching_mode=item_data['matching_mode'],
+					score_decay=item_data['score_decay'],
+					multi_match_decay=item_data['multi_match_decay'],
+					letter_decay_hl=item_data['letter_decay_hl'],
+					letter_decay_disregard=item_data.get('letter_decay_disregard', 0)
+				)
+			)
+
+		kpi.value_must_be_numeric = data.get('value_must_be_numeric', False)
+		kpi.value_percentage_match = data.get('value_percentage_match', VALUE_PERCENTAGE_DONT_CARE)
+		kpi.value_must_be_year = data.get('value_must_be_year', False)
+		kpi.minimum_score = data.get('minimum_score', 0)
+		kpi.minimum_score_desc_regex = data.get('minimum_score_desc_regex', 0)
+
+		return kpi
+
+	def save_to_yaml(self, filename):
+		"""Save KPISpecs to a YAML file"""
+		with open(filename, 'w') as f:
+			yaml.dump(self.to_dict(), f, default_flow_style=False, sort_keys=False)
+
+	@classmethod
+	def load_from_yaml(cls, filename):
+		"""Load KPISpecs from a YAML file"""
+		with open(filename, 'r') as f:
+			data = yaml.safe_load(f)
+		return cls.from_dict(data)

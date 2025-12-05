@@ -23,6 +23,15 @@ from osc_rule_based_extractor import __version__
 
 	
 	
+def load_kpis_from_directory(kpi_folder):
+	kpis = []
+	for filename in os.listdir(kpi_folder):
+		if filename.endswith(".yaml") or filename.endswith(".yml"):
+			filepath = os.path.join(directory, filename)
+			print(filepath)
+			k = KPISpecs.load_from_yaml(filename)
+			kpis.append(k)
+	return kpis
 
 	
 	
@@ -85,7 +94,6 @@ def analyze_pdf(pdf_file, kpis, default_year, info_file_contents, wildcard_restr
 	# analyze 
 	print_big("Analyze Pages", do_wait)
 	ana = AnalyzerDirectory(dir, guess_year)
-	#kpis = test_prepare_kpispecs()
 	#print(kpis)
 	
 	kpiresults = KPIResultSet(ana.find_multiple_kpis(kpis))
@@ -127,6 +135,10 @@ def main():
 						type=str,
 						default=None,
 						help='Folder where working files are stored')
+	parser.add_argument('--kpi_folder',
+						type=str,
+						default=None,
+						help='Folder where YAML files defining the KPIs are stored')
 	parser.add_argument('--output_folder',
 						type=str,
 						default=None,
@@ -139,6 +151,7 @@ def main():
 	args = parser.parse_args()
 	osc_rule_based_extractor.config.global_raw_pdf_folder = remove_trailing_slash(get_input_variable(args.raw_pdf_folder, "What is the raw pdf folder?")).replace('\\', '/') + r'/'
 	osc_rule_based_extractor.config.global_working_folder = remove_trailing_slash(get_input_variable(args.working_folder, "What is the working folder?")).replace('\\', '/') + r'/'
+	osc_rule_based_extractor.config.global_kpi_folder = remove_trailing_slash(get_input_variable(args.kpi_folder, "What is the path, where KPI YAML files are stored?")).replace('\\', '/') + r'/'
 	osc_rule_based_extractor.config.global_output_folder =  remove_trailing_slash(get_input_variable(args.output_folder, "What is the output folder?")).replace('\\', '/') + r'/'
 	osc_rule_based_extractor.config.global_verbosity = args.verbosity
 	
@@ -161,6 +174,7 @@ def main():
 	print_verbose(1, "Using osc_rule_based_extractor.config.global_exec_folder=" + osc_rule_based_extractor.config.global_exec_folder)
 	print_verbose(1, "Using osc_rule_based_extractor.config.global_raw_pdf_folder=" + osc_rule_based_extractor.config.global_raw_pdf_folder)
 	print_verbose(1, "Using osc_rule_based_extractor.config.global_working_folder=" + osc_rule_based_extractor.config.global_working_folder)
+	print_verbose(1, "Using osc_rule_based_extractor.config.global_kpi_folder=" + osc_rule_based_extractor.config.global_kpi_folder)
 	print_verbose(1, "Using osc_rule_based_extractor.config.global_output_folder=" + osc_rule_based_extractor.config.global_output_folder)
 	print_verbose(1, "Using osc_rule_based_extractor.config.global_verbosity=" + str(osc_rule_based_extractor.config.global_verbosity))
 	print_verbose(1, "Using osc_rule_based_extractor.config.global_rendering_font_override=" + osc_rule_based_extractor.config.global_rendering_font_override)
@@ -192,7 +206,7 @@ def main():
 	
 
 
-	kpis = test_prepare_kpispecs() # TODO: In the future, KPI specs should be loaded from "nicer" implemented source, e.g., JSON file definiton
+	kpis = load_kpis_from_directory(kpi_folder)
 	
 	overall_kpiresults = KPIResultSet()
 	

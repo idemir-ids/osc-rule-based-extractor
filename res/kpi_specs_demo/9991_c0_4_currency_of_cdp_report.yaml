@@ -1,0 +1,33 @@
+kpi_id: 9991
+kpi_name: C0.4 Currency of CDP Report
+desc_regex_match_list:
+- pattern_raw: .*\(c0\.4\) select the currency used.*
+  score: 8000
+  matching_mode: 2
+  score_decay: 0.1
+  case_sensitive: false
+  multi_match_decay: 0
+  letter_decay_hl: 2.049489961842071
+  letter_decay_disregard: 87
+  count_if_matched: true
+  allow_matching_against_concat_txt: false
+- pattern_raw: .*\(c0\.4\).*
+  score: 2000
+  matching_mode: 0
+  score_decay: 0.1
+  case_sensitive: false
+  multi_match_decay: 0
+  letter_decay_hl: 2.049489961842071
+  letter_decay_disregard: 87
+  count_if_matched: true
+  allow_matching_against_concat_txt: false
+value_regex_match_list:
+- pattern_raw: '[A-Z]{3,3}'
+  case_sensitive: true
+unit_regex_match_list: []
+value_must_be_numeric: false
+value_percentage_match: 0
+value_must_be_year: false
+anywhere_regex_match_list: []
+minimum_score: 500
+minimum_score_desc_regex: 250

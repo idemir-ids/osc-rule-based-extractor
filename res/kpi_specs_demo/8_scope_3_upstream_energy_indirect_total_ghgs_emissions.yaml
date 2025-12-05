@@ -1,0 +1,103 @@
+kpi_id: 8
+kpi_name: Scope 3 Upstream Energy indirect total GHGs emissions
+desc_regex_match_list:
+- pattern_raw: .*s.*cope( |-)3.*
+  score: 8000
+  matching_mode: 0
+  score_decay: 0.8
+  case_sensitive: false
+  multi_match_decay: 0
+  letter_decay_hl: 2.049489961842071
+  letter_decay_disregard: 28
+  count_if_matched: true
+  allow_matching_against_concat_txt: false
+- pattern_raw: .*ghg.*
+  score: 3000
+  matching_mode: 2
+  score_decay: 0.8
+  case_sensitive: false
+  multi_match_decay: 0
+  letter_decay_hl: 2.049489961842071
+  letter_decay_disregard: 28
+  count_if_matched: true
+  allow_matching_against_concat_txt: false
+- pattern_raw: .*indirect.*
+  score: 3000
+  matching_mode: 1
+  score_decay: 0.8
+  case_sensitive: false
+  multi_match_decay: 0
+  letter_decay_hl: 2.049489961842071
+  letter_decay_disregard: 28
+  count_if_matched: true
+  allow_matching_against_concat_txt: false
+- pattern_raw: .*emissions.*
+  score: 3000
+  matching_mode: 2
+  score_decay: 1
+  case_sensitive: false
+  multi_match_decay: 1
+  letter_decay_hl: 2.049489961842071
+  letter_decay_disregard: 28
+  count_if_matched: true
+  allow_matching_against_concat_txt: false
+- pattern_raw: .*(total|combine).*
+  score: 1500
+  matching_mode: 2
+  score_decay: 0.8
+  case_sensitive: false
+  multi_match_decay: 0
+  letter_decay_hl: 2.049489961842071
+  letter_decay_disregard: 28
+  count_if_matched: true
+  allow_matching_against_concat_txt: false
+- pattern_raw: .*intensity.*
+  score: 1
+  matching_mode: 3
+  score_decay: 0
+  case_sensitive: false
+  multi_match_decay: 0
+  letter_decay_hl: 2.1020157257540357
+  letter_decay_disregard: 0
+  count_if_matched: false
+  allow_matching_against_concat_txt: false
+- pattern_raw: .*s.*cope( |-)2.*
+  score: 1
+  matching_mode: 3
+  score_decay: 0
+  case_sensitive: false
+  multi_match_decay: 0
+  letter_decay_hl: 2.1020157257540357
+  letter_decay_disregard: 0
+  count_if_matched: false
+  allow_matching_against_concat_txt: false
+- pattern_raw: .*305.*
+  score: 1
+  matching_mode: 3
+  score_decay: 0
+  case_sensitive: false
+  multi_match_decay: 0
+  letter_decay_hl: 2.1020157257540357
+  letter_decay_disregard: 0
+  count_if_matched: false
+  allow_matching_against_concat_txt: false
+value_regex_match_list: []
+unit_regex_match_list:
+- pattern_raw: .*(ton|mn|million|kt|m t|co 2).*
+  case_sensitive: false
+value_must_be_numeric: true
+value_percentage_match: 0
+value_must_be_year: false
+anywhere_regex_match_list:
+- general_match:
+    pattern_raw: .*(environment|emission).*
+    case_sensitive: false
+  distance_mode: 1
+  score: 100
+  matching_mode: 1
+  score_decay: 0.9
+  multi_match_decay: 0.5
+  letter_decay_hl: 2.2171376698777805
+  letter_decay_disregard: 11
+minimum_score: 500
+minimum_score_desc_regex: 250

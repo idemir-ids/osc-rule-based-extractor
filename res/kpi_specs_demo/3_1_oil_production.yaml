@@ -1,0 +1,53 @@
+kpi_id: 3.1
+kpi_name: Oil Production
+desc_regex_match_list:
+- pattern_raw: .*production.*
+  score: 5000
+  matching_mode: 1
+  score_decay: 0.8
+  case_sensitive: false
+  multi_match_decay: 0
+  letter_decay_hl: 2.049489961842071
+  letter_decay_disregard: 10
+  count_if_matched: true
+  allow_matching_against_concat_txt: false
+- pattern_raw: .*oil.*
+  score: 5000
+  matching_mode: 1
+  score_decay: 0.8
+  case_sensitive: false
+  multi_match_decay: 1
+  letter_decay_hl: 2.049489961842071
+  letter_decay_disregard: 14
+  count_if_matched: true
+  allow_matching_against_concat_txt: false
+- pattern_raw: .*(total|combine).*
+  score: 1500
+  matching_mode: 2
+  score_decay: 0.8
+  case_sensitive: false
+  multi_match_decay: 0.9
+  letter_decay_hl: 2.1020157257540357
+  letter_decay_disregard: 5
+  count_if_matched: true
+  allow_matching_against_concat_txt: false
+value_regex_match_list: []
+unit_regex_match_list:
+- pattern_raw: .*(boe|barrel.*oil|(b|m)illion.*barrel|tonnes).*
+  case_sensitive: false
+value_must_be_numeric: true
+value_percentage_match: 0
+value_must_be_year: false
+anywhere_regex_match_list:
+- general_match:
+    pattern_raw: .*production.*
+    case_sensitive: false
+  distance_mode: 1
+  score: 100
+  matching_mode: 1
+  score_decay: 0.9
+  multi_match_decay: 0.5
+  letter_decay_hl: 2.2171376698777805
+  letter_decay_disregard: 10
+minimum_score: 500
+minimum_score_desc_regex: 250

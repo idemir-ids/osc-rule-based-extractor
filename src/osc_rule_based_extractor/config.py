@@ -17,9 +17,9 @@ global_raw_pdf_folder   = r"raw_pdf/"
 
 
 global_working_folder   = r"work_dir/"
+global_kpi_folder   = r"./"
 global_output_folder = r"output/"
 
-global_kpi_spec_path 	= ""  # if set, then command line argument will be ignored; example: "kpispec.txt"
 global_rendering_font_override = r"../../res/font/Tuffy.otf"
 global_approx_font_name		=r"../../res/font/Tuffy.otf" # use this font as approximation
 global_max_identify_complex_items_timeout = 0.5 # seconds

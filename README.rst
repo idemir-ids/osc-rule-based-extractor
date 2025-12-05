@@ -183,6 +183,7 @@ Run the extractor against the demo folders:
      --pdftohtml_mod_executable "osc-xpdf-mod/bin/pdftohtml_mod" \
      --raw_pdf_folder "demo/rulebased/input" \
      --working_folder "demo/rulebased/work" \
+     --kpi_folder "osc-rule-based-extractor/res/kpi_specs_demo" \
      --output_folder "demo/rulebased/output" \
      --verbosity 0 \
      > "demo/rulebased/log/rb.log"
@@ -202,6 +203,7 @@ Command reference
      --pdftohtml_mod_executable <path_to_pdftohtml_mod> \
      --raw_pdf_folder <input_pdf_dir> \
      --working_folder <work_dir> \
+     --kpi_folder "<kpi_folder>" \
      --output_folder <output_dir> \
      --verbosity <level>
 
@@ -213,6 +215,7 @@ Arguments:
 | **--raw_pdf_folder:** directory containing source PDF files.
 | **--working_folder:** directory for intermediate artifacts
   (created/used by the pipeline).
+| **--kpi_folder:** directory where KPI definition files are stored
 | **--output_folder:** directory where final extracted outputs are
   written.
 | **--verbosity:** integer log level (e.g., 0 for minimal output).
