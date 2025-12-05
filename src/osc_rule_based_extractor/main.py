@@ -27,9 +27,9 @@ def load_kpis_from_directory(kpi_folder):
 	kpis = []
 	for filename in os.listdir(kpi_folder):
 		if filename.endswith(".yaml") or filename.endswith(".yml"):
-			filepath = os.path.join(directory, filename)
-			print(filepath)
-			k = KPISpecs.load_from_yaml(filename)
+			filepath = os.path.join(kpi_folder, filename)
+			print_verbose(2, "Loading KPI: " + str(filepath))
+			k = KPISpecs.load_from_yaml(str(filepath))
 			kpis.append(k)
 	return kpis
 
@@ -206,7 +206,7 @@ def main():
 	
 
 
-	kpis = load_kpis_from_directory(kpi_folder)
+	kpis = load_kpis_from_directory(osc_rule_based_extractor.config.global_kpi_folder)
 	
 	overall_kpiresults = KPIResultSet()
 	

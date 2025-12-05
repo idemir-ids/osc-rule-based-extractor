@@ -7,7 +7,7 @@ desc_regex_match_list:
   score_decay: 0.1
   case_sensitive: false
   multi_match_decay: 0
-  letter_decay_hl: 2.049489961842071
+  letter_decay_hl: 20.0
   letter_decay_disregard: 13
   count_if_matched: true
   allow_matching_against_concat_txt: false
@@ -17,7 +17,7 @@ desc_regex_match_list:
   score_decay: 0.1
   case_sensitive: false
   multi_match_decay: 0
-  letter_decay_hl: 2.049489961842071
+  letter_decay_hl: 20.0
   letter_decay_disregard: 13
   count_if_matched: true
   allow_matching_against_concat_txt: false
@@ -27,7 +27,7 @@ desc_regex_match_list:
   score_decay: 0.1
   case_sensitive: false
   multi_match_decay: 0
-  letter_decay_hl: 2.049489961842071
+  letter_decay_hl: 20.0
   letter_decay_disregard: 7
   count_if_matched: true
   allow_matching_against_concat_txt: false
@@ -37,7 +37,7 @@ desc_regex_match_list:
   score_decay: 0.1
   case_sensitive: false
   multi_match_decay: 0
-  letter_decay_hl: 2.049489961842071
+  letter_decay_hl: 20.0
   letter_decay_disregard: 13
   count_if_matched: true
   allow_matching_against_concat_txt: false
@@ -47,7 +47,7 @@ desc_regex_match_list:
   score_decay: 0.1
   case_sensitive: false
   multi_match_decay: 0
-  letter_decay_hl: 2.049489961842071
+  letter_decay_hl: 20.0
   letter_decay_disregard: 13
   count_if_matched: true
   allow_matching_against_concat_txt: false
@@ -57,7 +57,7 @@ desc_regex_match_list:
   score_decay: 0.8
   case_sensitive: false
   multi_match_decay: 0
-  letter_decay_hl: 2.0666500612055554
+  letter_decay_hl: 15.0
   letter_decay_disregard: 10
   count_if_matched: true
   allow_matching_against_concat_txt: false
@@ -67,7 +67,7 @@ desc_regex_match_list:
   score_decay: 0.8
   case_sensitive: false
   multi_match_decay: 0
-  letter_decay_hl: 2.032667008151177
+  letter_decay_hl: 30.0
   letter_decay_disregard: 14
   count_if_matched: true
   allow_matching_against_concat_txt: false
@@ -77,7 +77,7 @@ desc_regex_match_list:
   score_decay: 0.8
   case_sensitive: false
   multi_match_decay: 0
-  letter_decay_hl: 2.032667008151177
+  letter_decay_hl: 30.0
   letter_decay_disregard: 14
   count_if_matched: true
   allow_matching_against_concat_txt: false
@@ -87,7 +87,7 @@ desc_regex_match_list:
   score_decay: 0.8
   case_sensitive: false
   multi_match_decay: 0
-  letter_decay_hl: 2.032667008151177
+  letter_decay_hl: 30.0
   letter_decay_disregard: 30
   count_if_matched: true
   allow_matching_against_concat_txt: false
@@ -97,7 +97,7 @@ desc_regex_match_list:
   score_decay: 0.8
   case_sensitive: false
   multi_match_decay: 0
-  letter_decay_hl: 2.032667008151177
+  letter_decay_hl: 30.0
   letter_decay_disregard: 30
   count_if_matched: true
   allow_matching_against_concat_txt: false
@@ -107,7 +107,7 @@ desc_regex_match_list:
   score_decay: 0
   case_sensitive: false
   multi_match_decay: 0
-  letter_decay_hl: 2.1020157257540357
+  letter_decay_hl: 10.0
   letter_decay_disregard: 0
   count_if_matched: false
   allow_matching_against_concat_txt: false
@@ -118,7 +118,7 @@ desc_regex_match_list:
   score_decay: 0.8
   case_sensitive: false
   multi_match_decay: 0
-  letter_decay_hl: 2.032667008151177
+  letter_decay_hl: 30.0
   letter_decay_disregard: 30
   count_if_matched: true
   allow_matching_against_concat_txt: false
@@ -128,7 +128,7 @@ desc_regex_match_list:
   score_decay: 0.8
   case_sensitive: false
   multi_match_decay: 0
-  letter_decay_hl: 2.032667008151177
+  letter_decay_hl: 30.0
   letter_decay_disregard: 30
   count_if_matched: true
   allow_matching_against_concat_txt: false
@@ -138,7 +138,7 @@ desc_regex_match_list:
   score_decay: 0.8
   case_sensitive: false
   multi_match_decay: 0
-  letter_decay_hl: 2.032667008151177
+  letter_decay_hl: 30.0
   letter_decay_disregard: 30
   count_if_matched: true
   allow_matching_against_concat_txt: false
@@ -148,7 +148,7 @@ desc_regex_match_list:
   score_decay: 0
   case_sensitive: false
   multi_match_decay: 0
-  letter_decay_hl: 2.1020157257540357
+  letter_decay_hl: 10.0
   letter_decay_disregard: 0
   count_if_matched: false
   allow_matching_against_concat_txt: false
@@ -158,7 +158,7 @@ desc_regex_match_list:
   score_decay: 0
   case_sensitive: false
   multi_match_decay: 0
-  letter_decay_hl: 2.1020157257540357
+  letter_decay_hl: 10.0
   letter_decay_disregard: 0
   count_if_matched: false
   allow_matching_against_concat_txt: false
@@ -168,7 +168,7 @@ desc_regex_match_list:
   score_decay: 0
   case_sensitive: false
   multi_match_decay: 0
-  letter_decay_hl: 2.1020157257540357
+  letter_decay_hl: 10.0
   letter_decay_disregard: 0
   count_if_matched: false
   allow_matching_against_concat_txt: false
@@ -178,7 +178,7 @@ desc_regex_match_list:
   score_decay: 0.8
   case_sensitive: false
   multi_match_decay: 0
-  letter_decay_hl: 2.032667008151177
+  letter_decay_hl: 30.0
   letter_decay_disregard: 30
   count_if_matched: true
   allow_matching_against_concat_txt: false
@@ -188,7 +188,7 @@ desc_regex_match_list:
   score_decay: 0.8
   case_sensitive: false
   multi_match_decay: 0
-  letter_decay_hl: 2.032667008151177
+  letter_decay_hl: 30.0
   letter_decay_disregard: 30
   count_if_matched: true
   allow_matching_against_concat_txt: false
@@ -198,7 +198,7 @@ desc_regex_match_list:
   score_decay: 0.8
   case_sensitive: false
   multi_match_decay: 0
-  letter_decay_hl: 2.032667008151177
+  letter_decay_hl: 30.0
   letter_decay_disregard: 30
   count_if_matched: true
   allow_matching_against_concat_txt: false
@@ -208,7 +208,7 @@ desc_regex_match_list:
   score_decay: 0.8
   case_sensitive: false
   multi_match_decay: 0
-  letter_decay_hl: 2.032667008151177
+  letter_decay_hl: 30.0
   letter_decay_disregard: 30
   count_if_matched: true
   allow_matching_against_concat_txt: false
@@ -218,7 +218,7 @@ desc_regex_match_list:
   score_decay: 0.8
   case_sensitive: false
   multi_match_decay: 0
-  letter_decay_hl: 2.032667008151177
+  letter_decay_hl: 30.0
   letter_decay_disregard: 16
   count_if_matched: true
   allow_matching_against_concat_txt: false
@@ -228,7 +228,7 @@ desc_regex_match_list:
   score_decay: 0.8
   case_sensitive: false
   multi_match_decay: 1
-  letter_decay_hl: 2.1020157257540357
+  letter_decay_hl: 10.0
   letter_decay_disregard: 27
   count_if_matched: true
   allow_matching_against_concat_txt: false
@@ -238,7 +238,7 @@ desc_regex_match_list:
   score_decay: 0
   case_sensitive: false
   multi_match_decay: 0
-  letter_decay_hl: 2.1020157257540357
+  letter_decay_hl: 10.0
   letter_decay_disregard: 0
   count_if_matched: false
   allow_matching_against_concat_txt: false
@@ -248,7 +248,7 @@ desc_regex_match_list:
   score_decay: 0.1
   case_sensitive: false
   multi_match_decay: 0
-  letter_decay_hl: 2.049489961842071
+  letter_decay_hl: 20.0
   letter_decay_disregard: 41
   count_if_matched: true
   allow_matching_against_concat_txt: false
@@ -270,7 +270,7 @@ anywhere_regex_match_list:
   matching_mode: 2
   score_decay: 0.9
   multi_match_decay: 0.2
-  letter_decay_hl: 2.1294896717256204
+  letter_decay_hl: 8.0
   letter_decay_disregard: 6
 - general_match:
     pattern_raw: .*scope[^a-zA-Z0-9]?1.*
@@ -280,7 +280,7 @@ anywhere_regex_match_list:
   matching_mode: 2
   score_decay: 0.7
   multi_match_decay: 0.2
-  letter_decay_hl: 2.1294896717256204
+  letter_decay_hl: 8.0
   letter_decay_disregard: 6
 - general_match:
     pattern_raw: .*c6\.1.*
@@ -290,7 +290,7 @@ anywhere_regex_match_list:
   matching_mode: 2
   score_decay: 0.9
   multi_match_decay: 0.2
-  letter_decay_hl: 2.1294896717256204
+  letter_decay_hl: 8.0
   letter_decay_disregard: 4
 minimum_score: 500
 minimum_score_desc_regex: 250

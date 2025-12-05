@@ -7,7 +7,7 @@ desc_regex_match_list:
   score_decay: 0.1
   case_sensitive: false
   multi_match_decay: 0
-  letter_decay_hl: 2.049489961842071
+  letter_decay_hl: 20.0
   letter_decay_disregard: 78
   count_if_matched: true
   allow_matching_against_concat_txt: false
@@ -17,7 +17,7 @@ desc_regex_match_list:
   score_decay: 0.1
   case_sensitive: false
   multi_match_decay: 0
-  letter_decay_hl: 2.049489961842071
+  letter_decay_hl: 20.0
   letter_decay_disregard: 78
   count_if_matched: true
   allow_matching_against_concat_txt: false

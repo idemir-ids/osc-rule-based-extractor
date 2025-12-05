@@ -10,6 +10,7 @@ from osc_rule_based_extractor.globals import *
 from osc_rule_based_extractor.Format_Analyzer import *
 from osc_rule_based_extractor.HTMLPage import *
 import yaml
+import math
 
 # Matching modes:
 MATCHING_MUST_INCLUDE 	= 0 # no match, if not included
@@ -430,8 +431,8 @@ class KPISpecs:
 	def _calculate_letter_decay_hl(letter_decay):
 		"""Reverse calculate half-life from letter_decay value"""
 		if letter_decay == 1:
-			return 0
-		return 1.0 / (abs(0.5 ** (1.0 / letter_decay)) if letter_decay != 0 else 1)
+			return 0.0
+		return round(math.log(0.5) / math.log(letter_decay), 5)
 
 	@classmethod
 	def from_dict(cls, data):

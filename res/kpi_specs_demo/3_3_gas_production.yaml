@@ -7,7 +7,7 @@ desc_regex_match_list:
   score_decay: 0.8
   case_sensitive: false
   multi_match_decay: 0
-  letter_decay_hl: 2.049489961842071
+  letter_decay_hl: 20.0
   letter_decay_disregard: 14
   count_if_matched: true
   allow_matching_against_concat_txt: false
@@ -17,7 +17,7 @@ desc_regex_match_list:
   score_decay: 0.8
   case_sensitive: false
   multi_match_decay: 1
-  letter_decay_hl: 2.049489961842071
+  letter_decay_hl: 20.0
   letter_decay_disregard: 3
   count_if_matched: true
   allow_matching_against_concat_txt: false
@@ -27,7 +27,7 @@ desc_regex_match_list:
   score_decay: 0.8
   case_sensitive: false
   multi_match_decay: 0
-  letter_decay_hl: 2.049489961842071
+  letter_decay_hl: 20.0
   letter_decay_disregard: 10
   count_if_matched: true
   allow_matching_against_concat_txt: false
@@ -37,7 +37,7 @@ desc_regex_match_list:
   score_decay: 0.8
   case_sensitive: false
   multi_match_decay: 0
-  letter_decay_hl: 2.049489961842071
+  letter_decay_hl: 20.0
   letter_decay_disregard: 14
   count_if_matched: true
   allow_matching_against_concat_txt: false
@@ -47,7 +47,7 @@ desc_regex_match_list:
   score_decay: 0.8
   case_sensitive: false
   multi_match_decay: 0.9
-  letter_decay_hl: 2.1020157257540357
+  letter_decay_hl: 10.0
   letter_decay_disregard: 5
   count_if_matched: true
   allow_matching_against_concat_txt: false
@@ -57,7 +57,7 @@ desc_regex_match_list:
   score_decay: 0
   case_sensitive: false
   multi_match_decay: 0
-  letter_decay_hl: 2.1020157257540357
+  letter_decay_hl: 10.0
   letter_decay_disregard: 0
   count_if_matched: false
   allow_matching_against_concat_txt: false
@@ -67,7 +67,7 @@ desc_regex_match_list:
   score_decay: 0
   case_sensitive: false
   multi_match_decay: 0
-  letter_decay_hl: 2.1020157257540357
+  letter_decay_hl: 10.0
   letter_decay_disregard: 0
   count_if_matched: false
   allow_matching_against_concat_txt: false
@@ -87,7 +87,7 @@ anywhere_regex_match_list:
   matching_mode: 1
   score_decay: 0.9
   multi_match_decay: 0.5
-  letter_decay_hl: 2.2171376698777805
+  letter_decay_hl: 5.0
   letter_decay_disregard: 10
 minimum_score: 500
 minimum_score_desc_regex: 250
