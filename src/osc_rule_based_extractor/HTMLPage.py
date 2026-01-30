@@ -1512,10 +1512,10 @@ class HTMLPage:
 						
 						span_font = None
 						if(int(gs[0]) in font_dict and font_dict[int(gs[0])] in font_url_dict):
-							span_font = ImageFont.truetype(fonts_dir + '/' + font_url_dict[font_dict[int(gs[0])]] , int(gs[1]))
+							span_font = ImageFont.truetype(fonts_dir + '/' + font_url_dict[font_dict[int(gs[0])]] , max(1,int(gs[1])))
 							item.font_file = fonts_dir + '/' + font_url_dict[font_dict[int(gs[0])]]
 						else:
-							span_font = ImageFont.truetype(osc_rule_based_extractor.config.global_approx_font_name , int(gs[1]))
+							span_font = ImageFont.truetype(osc_rule_based_extractor.config.global_approx_font_name , max(1,int(gs[1])))
 							item.font_file = osc_rule_based_extractor.config.global_approx_font_name
 						
 						try:
@@ -1549,7 +1549,7 @@ class HTMLPage:
 								if(word.rect.x0 < word.rect.x1 and word.rect.y0 < word.rect.y1): # otherwise, bad word!
 									item.words.append(word)
 				
-				item.space_width = max(space_width, get_text_width(' ',ImageFont.truetype(osc_rule_based_extractor.config.global_approx_font_name, item.font_size)))
+				item.space_width = max(space_width, get_text_width(' ',ImageFont.truetype(osc_rule_based_extractor.config.global_approx_font_name, max(1,item.font_size))))
 				#print(item.space_width)
 				#item.space_width = get_text_width(' ',ImageFont.truetype(osc_rule_based_extractor.config.global_approx_font_name, item.font_size))
 				item.fix_overlapping_words()
