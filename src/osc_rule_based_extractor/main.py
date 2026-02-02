@@ -64,7 +64,10 @@ def analyze_pdf(pdf_file, kpis, default_year, info_file_contents, wildcard_restr
 		#convert pdf to html
 		print_big("Convert PDF to HTML", do_wait)
 		if(force_pdf_convert or not file_exists(htmldir_path+'/index.html')):
-			HTMLDirectory.convert_pdf_to_html(pdf_file, info_file_contents)
+			try:
+				HTMLDirectory.convert_pdf_to_html(pdf_file, info_file_contents)
+			except:
+				return KPIResultSet() # something went wrong, probalby not valid PDF. return empty, and that's it!
 
 
 		#return KPIResultSet()# STOP after converting PDF files (dont continue with analysis)
