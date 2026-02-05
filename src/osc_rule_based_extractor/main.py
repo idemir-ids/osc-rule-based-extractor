@@ -79,8 +79,9 @@ def analyze_pdf(pdf_file, kpis, default_year, info_file_contents, wildcard_restr
 		dir = HTMLDirectory()
 		if(force_parse_pdf or get_num_of_files(htmldir_path+'/jpage*.json') != get_num_of_files(htmldir_path+'/page*.html') ): 
 			dir.parse_html_directory(get_html_out_dir(pdf_file), 'page*.html') # ! page*
-			dir.render_to_png(htmldir_path, htmldir_path)
-			dir.save_to_dir(htmldir_path)
+			# Comment the next 2 lines in, if you want to save temp results
+			#dir.render_to_png(htmldir_path, htmldir_path)
+			#dir.save_to_dir(htmldir_path)
 			#exit() #TODO: Remove this!!!!!
 			if(wildcard_restrict_page == '*'):
 				reload_neccessary = False
