@@ -232,8 +232,8 @@ class TestData:
 			fname = f[2] + '.' + f[3]
 			
 			if(fname != Format_Analyzer.cleanup_filename(fname)):
-				print("Warning: Bad filename: '" + fname + "' - this file will be skipped")
-				continue
+				print("Warning: Bad filename: '" + fname + "' - this file might cause problems on certain file systems")
+				#continue
 		
 		
 			sample = TestDataSample()
